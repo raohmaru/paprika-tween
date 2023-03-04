@@ -1,0 +1,45 @@
+{
+  "name": "paprika",
+  "version": "1.0.0",
+  "description": "Spicy JavaScript animation engine",
+  "browser": "./dist/paprika.min.js",
+  "main": "./dist/paprika.cjs",
+  "exports": {
+    "import": "./dist/paprika.js",
+    "require": "./dist/paprika.cjs",
+    "easing": "./dist/easing.js"
+  },
+  "type": "module",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "build":  "npm run build:dist && npm run build:es5 && npm run build:node",
+    "build:dev":  "node build.mjs",
+    "build:dist": "node build.mjs --env=prod",
+    "build:es5":  "node build.mjs --env=es5",
+    "build:node": "node build.mjs --env=node",
+    "lint": "eslint src/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raohmaru/paprika.git"
+  },
+  "keywords": [
+    "tweening",
+    "animation",
+    "tweening-engine"
+  ],
+  "author": "raohmaru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raohmaru/paprika/issues"
+  },
+  "homepage": "https://github.com/raohmaru/paprika",
+  "devDependencies": {
+    "esbuild": "0.17.11",
+    "eslint": "^8.35.0"
+  }
+}
