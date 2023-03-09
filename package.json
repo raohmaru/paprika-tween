@@ -15,13 +15,14 @@
     "node": ">=16"
   },
   "scripts": {
-    "build":  "npm run build:dist && npm run build:es5 && npm run build:node",
-    "build:dev":  "node build.mjs",
+    "build": "npm run build:dist && npm run build:es5 && npm run build:node",
+    "build:dev": "node build.mjs",
     "build:dist": "node build.mjs --env=prod",
-    "build:es5":  "node build.mjs --env=es5",
+    "build:es5": "node build.mjs --env=es5",
     "build:node": "node build.mjs --env=node",
     "lint": "eslint src/**/*.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc ./src -r -d ./docs -t ./node_modules/minami"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,9 @@
   "homepage": "https://github.com/raohmaru/paprika",
   "devDependencies": {
     "esbuild": "0.17.11",
-    "eslint": "^8.35.0"
+    "eslint": "^8.35.0",
+    "jsdoc": "^4.0.2",
+    "minami": "^1.2.3",
+    "taffydb": "^2.7.3"
   }
 }
