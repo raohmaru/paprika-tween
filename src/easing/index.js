@@ -1,3 +1,5 @@
+/** @module paprika/easing */
+
 export { Back } from './back.js';
 export { Bounce } from './bounce.js';
 export { Circular } from './circular.js';

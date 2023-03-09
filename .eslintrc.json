@@ -13,6 +13,7 @@
     },
     "rules": {
       "comma-dangle": ["error", "never"],
+      "no-constant-condition": 0,
       "indent": ["error", 4],
       "semi": "error"
     }

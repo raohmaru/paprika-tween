@@ -1,5 +1,10 @@
 import { Spice, Mortar } from './index.js';
 
+/**
+ * Class representing a duck.
+ * @augments Spice
+ * @private
+ */
 class Sweetie extends Spice {
     constructor(options) {
         super(options);

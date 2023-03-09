@@ -15,7 +15,7 @@
         output {
             white-space: pre;
         }
-        #toy {
+        #toy1 {
             position: absolute;
             left: 0;
             width: 50px;
@@ -25,19 +25,30 @@
             background: #000;
             cursor: pointer;
         }
+        #toy2 {
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border: 4px solid #000;
+            border-radius: 50%;
+            background: #ffcc00;
+        }
     </style>
 </head>
 <body>
     <h1>Paprika! 🌶</h1>
-    <input type="range" id="ruler" min="0" max="1" step="0.01" value="0">
+    <input type="range" id="ruler" min="0" max="4" step="0.01" value="0">
     <button id="play">▶</button>
     <button id="sweet">Sweet</button>
     <br>
     <output id="output">0 / 0</output>
-    <div id="toy"></div>
+    <div id="toy1"></div>
+    <div id="toy2"></div>
     
-    <script src="../dist/paprika.es5.min.js"></script>
-    <script src="../dist/easing.es5.min.js"></script>
+    <!-- <script src="../dist/paprika.es5.min.js"></script>
+    <script src="../dist/easing.es5.min.js"></script> -->
     <script type="module">
         import { Mixer, Spice, Recipe, Mortar, sweet } from '../src/index.js';
         import { Cubic, Elastic } from '../src/easing/index.js';
@@ -47,21 +58,40 @@
         // const { Cubic, Elastic } = Easing;
         
         const $output = document.getElementById('output');
-        const $toy = document.getElementById('toy');
+        const $toy1 = document.getElementById('toy1');
+        const $toy2 = document.getElementById('toy2');
 
+        const spiceA = new Spice({
+            duration: 1,
+            from: { radius: 50 },
+            to: { radius: 0 },
+            render: (v, props) => {
+                $toy2.style.borderRadius = `${props.radius}%`;
+            },
+            onEnd: (props) => console.log('spiceA')
+        });
+        const spiceB = new Spice({
+            duration: 1,
+            delay: 2,
+            from: { opacity: 1 },
+            to: { opacity: 0 },
+            render: (v, props) => {
+                $toy2.style.opacity = `${props.opacity}`;
+            }
+        });
         const spiceX = new Spice({
             duration: 1,
             easing: Cubic.InOut,
             from: { x: 0 },
             to: { x: 200 },
             render: (v, props) => {
-                $toy.style.left = `${props.x}px`;
+                $toy1.style.left = `${props.x}px`;
                 $output.textContent = `left: ${v} / ${props.x}`;
             },
             onEnd: (props) => console.log(props)
         });
         const spiceC = new Spice({
-            duration: 1,
+            duration: 0.5,
             to: {
                 color: 16777215
             },
@@ -70,21 +100,40 @@
                 const r = (hex >> 16) & 0xFF;
                 const g = (hex >> 8) & 0xFF;
                 const b = hex & 0xFF;
-                $toy.style.background = `rgb(${r} ${g} ${b})`;
-                $output.textContent += `\ncolor: ${$toy.style.background}`;
+                $toy1.style.background = `rgb(${r} ${g} ${b})`;
+                $output.textContent = `color: ${$toy1.style.background}`;
             }
         });
-        const mixer = Mixer();
-        mixer.add(spiceX, spiceC);
+        const spiceY = new Spice({
+            duration: 2,
+            from: { y: 0 },
+            to: { y: 200 },
+            render: (v, props) => {
+                $toy1.style.paddingTop = `${props.y}px`;
+                $output.textContent = `paddingTop: ${v} / ${props.y}`;
+            }
+        });
+        const spiceR = new Spice({
+            duration: 0.5, 
+            from: { rotation: 0 },
+            to:   { rotation: 360 },
+            render: (v, props) => {
+                $toy1.style.transform = `rotate(${props.rotation}deg)`;
+                $output.textContent = `rotation: ${v} / ${props.rotation}`;
+            }
+        });
+        const mixer = new Mixer();
+        mixer.add(spiceA, spiceB);
+        mixer.add(new Recipe({onEnd:(r) => console.log('Recipe end', r)}).add(spiceX, spiceC, spiceY, spiceR));
         mixer.start(0);
-
         document.getElementById('ruler').addEventListener('input', e => {
             mixer.frame(parseFloat(e.currentTarget.value));
         });
 
+        // ---------------------------------------------------------------
         const mortar = new Mortar();
-        $toy.addEventListener('click', e => {
-            const size = $toy.clientWidth;
+        $toy1.addEventListener('click', e => {
+            const size = $toy1.clientWidth;
             const spiceS = new Spice({
                 duration: 1000,
                 easing: Cubic.Out,
@@ -97,8 +146,8 @@
                     height: size + 25
                 },
                 render: (v, props) => {
-                    $toy.style.width = `${props.width}px`;
-                    $toy.style.height = `${props.height}px`;
+                    $toy1.style.width = `${props.width}px`;
+                    $toy1.style.height = `${props.height}px`;
                     $output.textContent = `size: ${v} / ${props.width}`;
                 },
                 onEnd: (props, spice) => {
@@ -110,6 +159,7 @@
             mortar.start(delta => spiceS.frame());
         });
 
+        // ---------------------------------------------------------------
         const $play = document.getElementById('play');
         let mortero;
         $play.addEventListener('click', e => {
@@ -118,12 +168,12 @@
                 mortero.running ? mortero.pause() : mortero.resume();
                 return;
             }
-            const recipe = new Recipe((recipe) => {
+            const recipe = new Recipe({ onEnd: (recipe) => {
                     recipe.dispose();
                     mortero.stop();
                     mortero = null;
                     $play.textContent = '▶';
-                })
+                }})
                 .add(
                     new Spice({
                         duration: 1000, 
@@ -131,7 +181,7 @@
                         from: { rotation: 0 },
                         to:   { rotation: 360 },
                         render: (v, props) => {
-                            $toy.style.transform = `rotate(${props.rotation}deg)`;
+                            $toy1.style.transform = `rotate(${props.rotation}deg)`;
                             $output.textContent = `rotation: ${v} / ${props.rotation}`;
                         }
                     }),
@@ -141,7 +191,7 @@
                         from: { rotation: 360 },
                         to:   { rotation: 0 },
                         render: (v, props) => {
-                            $toy.style.transform = `rotate(${props.rotation}deg)`;
+                            $toy1.style.transform = `rotate(${props.rotation}deg)`;
                             $output.textContent = `rotation: ${v} / ${props.rotation}`;
                         }
                     })
@@ -153,6 +203,7 @@
             mortero.start();
         });
 
+        // ---------------------------------------------------------------
         let globalSpice;
         document.getElementById('sweet').addEventListener('click', async (e) => {
             if (globalSpice) {
@@ -161,7 +212,7 @@
             }
             const { sweetie, spice } = await sweet({
                 render: (v, props) => {
-                    $toy.style.borderWidth = `${props.size}px`;
+                    $toy1.style.borderWidth = `${props.size}px`;
                     $output.textContent = `border: ${v} / ${props.size}`;
                 }
             });
