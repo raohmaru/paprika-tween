@@ -1,8 +1,9 @@
 /**
- * Creates a Mixer instance, which can hold different [spices]{@link Spice} or [recipes]{@link Recipe} that will be animated at the same time.<br><br>
+ * A Mixer is an object which can hold different [spices]{@link Spice} or [recipes]{@link Recipe} that will be animated at the same time.
+ * <br><br>
  * Note that a Mixer instance does not play the animation by itself. Its method [frame()]{@linkcode Mixer#frame}
  * must be called in order to execute the interpolations of each animatable object, with methods like
- * [requestAnimationFrame()]{@link https://developer.mozilla.org/es/docs/Web/API/Window/requestAnimationFrame}
+ * [requestAnimationFrame()]{@link https://developer.mozilla.org/en/docs/Web/API/Window/requestAnimationFrame}
  * or an instance of the {@link Mortar} class.
  * @example
 import { Mixer, Spice } from 'paprika';
@@ -67,7 +68,7 @@ mixer.start(0);
      */
     start(time) {
         for (let i = 0; i < this.spices.length; i++) {
-            this.spices.start(time);
+            this.spices[i].start(time);
         }
         return this;
     }
@@ -76,8 +77,8 @@ mixer.start(0);
      * @since 1.0.0
      */
     dispose() {
-        for (let i = 0; i < this.spices.length; i++) {
-            this.spices.dispose();
+        for (let i = this.spices.length - 1; i !== -1; i--) {
+            this.spices[i].dispose();
         }
         this.spices.length = 0;
     }
@@ -104,7 +105,7 @@ mixer.frame(1);
      */
     frame(time) {
         for (let i = 0; i < this.spices.length; i++) {
-            this.spices.frame(time);
+            this.spices[i].frame(time);
         }
     }
 }
