@@ -8,15 +8,15 @@ import { Spice, Mortar } from './index.js';
 class Sweetie extends Spice {
     constructor(options) {
         super(options);
-        this._mortar = new Mortar();
+        this._mortar = new Mortar((delta, time) => this.frame(time));
     }
 
     start() {
-        this._mortar.start((delta, time) => this.frame(time));
+        this._mortar.start();
         super.start(this._mortar.time);
     }
 
-    stop() {
+    pause() {
         this._mortar.pause();
     }
 
@@ -33,7 +33,7 @@ class Sweetie extends Spice {
     async run(config) {
         return new Promise((resolve) => {
             this.onEnd = function () {
-                this.stop();
+                this.pause();
                 resolve({
                     sweetie: this.run.bind(this),
                     spice: this

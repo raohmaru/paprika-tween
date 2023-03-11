@@ -77,7 +77,8 @@
             to: { opacity: 0 },
             render: (v, props) => {
                 $toy2.style.opacity = `${props.opacity}`;
-            }
+            },
+            onEnd: (props) => console.log('spiceB')
         });
         const spiceX = new Spice({
             duration: 1,
@@ -131,10 +132,11 @@
         });
 
         // ---------------------------------------------------------------
-        const mortar = new Mortar();
+        let spiceS;
+        const mortar = new Mortar(delta => spiceS.frame());
         $toy1.addEventListener('click', e => {
             const size = $toy1.clientWidth;
-            const spiceS = new Spice({
+            spiceS = new Spice({
                 duration: 1000,
                 easing: Cubic.Out,
                 from: {
@@ -156,7 +158,7 @@
                 }
             });
             spiceS.start();
-            mortar.start(delta => spiceS.frame());
+            mortar.start();
         });
 
         // ---------------------------------------------------------------
@@ -197,7 +199,7 @@
                     })
                 )
                 .start();
-            mortero = new Mortar(undefined, (delta, time) => {
+            mortero = new Mortar((delta, time) => {
                 recipe.frame(time);
             });
             mortero.start();
@@ -207,7 +209,7 @@
         let globalSpice;
         document.getElementById('sweet').addEventListener('click', async (e) => {
             if (globalSpice) {
-                globalSpice.running ? globalSpice.stop() : globalSpice.resume();
+                globalSpice.running ? globalSpice.pause() : globalSpice.resume();
                 return;
             }
             const { sweetie, spice } = await sweet({
