@@ -1,3 +1,5 @@
+import { Seed } from './seed.js';
+
 const defaults = {
     duration: 0,
     delay: 0,
@@ -9,8 +11,9 @@ const defaults = {
 };
 
 /**
- * Creates a Spice instance, which is an animatable object which properties can be interpolated from its starting
+ * A Spice is an animatable object which properties can be interpolated from its starting
  * value(s) to its end value(s), using an easing function.
+ * @extends Seed
  * @example
 import { Spice } from 'paprika';
 import { Cubic } from 'paprika/easing';
@@ -29,9 +32,9 @@ spice.start(0);
 spice.frame(15);
  * @since 1.0.0
  */
-export class Spice {
+export class Spice extends Seed {
     /**
-     * Creates a new instance with the given options.
+     * Creates a new Spice instance with the given options.
      * @param {Object} options
      * @param {number} options.duration - The duration of the interpolation. The time scale should be the same as the
      * starting time and the [frame()]{@linkcode Spice#frame} time.
@@ -49,6 +52,7 @@ export class Spice {
      * @since 1.0.0
      */
     constructor(options) {
+        super();
         Object.assign(this, defaults, options);
     }
     /**
@@ -67,7 +71,6 @@ spice.start(5);
         this._startTime = time ?? window.performance.now();
         this._startTime += this.delay;
         this._interpolated = Object.assign(Object.create(null), this.to);
-        this._elapsed = 0;
     }
     /**
      * Moves the interpolation of the properties of the spice by the given time, which is
@@ -76,7 +79,6 @@ spice.start(5);
      * [performance.now()]{@link https://developer.mozilla.org/en-US/docs/Web/API/Performance/now}
      * will be used instead.
      * @param {(DOMHighResTimeStamp|number)} [time] - The amount of time to interpolate since the animations started.
-     * @returns {Boolean} - Whether the interpolation is in progress (true) or it has reached the end (false).
      * @since 1.0.0
     * @example
 import { Spice } from 'paprika';
@@ -91,15 +93,10 @@ spice.frame(2);
      */
     frame(time) {
         time ??= window.performance.now();
-        let elapsed = (time - this._startTime) / this.duration;
-        if (elapsed < 0) {
-            elapsed = 0;
-        } else if (elapsed > 1) {
-            elapsed = 1;
-        }
+        let elapsed = this.elapse(time);
         // Don't render if the elapsed time has not changed
         if (this._elapsed === elapsed) {
-            return elapsed < 1;
+            return;
         }
         this._elapsed = elapsed;
         const value = this.easing(elapsed);
@@ -114,23 +111,7 @@ spice.frame(2);
         this.render(value, this._interpolated, this);
         if (elapsed === 1) {
             this.onEnd(this._interpolated, this);
-            return false;
         }
-        return true;
-    }
-    /**
-     * Jumps the interpolation to the end values (this is, moves the animation to the end).
-     * @since 1.0.0
-     */
-    end() {
-        this.frame(this._startTime + this.duration);
-    }
-    /**
-     * Resets the interpolation by setting it to the initial values (this is, moves the animation to the beginning).
-     * @since 1.0.0
-     */
-    reset() {
-        this.frame(this._startTime);
     }
     /**
      * Removes the interpolatable properties of the instance and its callback functions, making the instance eligible
@@ -142,21 +123,5 @@ spice.frame(2);
         this.to = null;
         this.render = null;
         this.onEnd = null;
-    }
-    /**
-     * Returns whether the interpolation has started or not.
-     * @returns {Boolean} - <code>true</code> if it has started, <code>false</code> otherwise.
-     * @since 1.0.0
-     */
-    hasStarted() {
-        return this._elapsed > 0;
-    }
-    /**
-     * Returns whether the interpolation has ended or not.
-     * @returns {Boolean} - <code>true</code> if it has ended, <code>false</code> otherwise.
-     * @since 1.0.0
-     */
-    hasEnded() {
-        return this._elapsed === 1;
     }
 }
