@@ -1,5 +1,5 @@
 # Paprika! 🌶
-A spicy JavaScript animation engine.
+A spicy JavaScript animation/tweening engine.
 
 ## Compatibility
 + `??=` es2021 node15

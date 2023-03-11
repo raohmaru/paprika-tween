@@ -22,7 +22,7 @@
     "build:node": "node build.mjs --env=node",
     "lint": "eslint src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "jsdoc ./src -r -d ./docs -t ./node_modules/minami"
+    "docs": "jsdoc -R README.md ./src -r -d ./docs -t ./node_modules/minami"
   },
   "repository": {
     "type": "git",
