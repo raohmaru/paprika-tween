@@ -13,7 +13,7 @@ export class Seed {
     }
     /**
      * Calculates the current elapsed time of the interpolation as a float number between 0 (start) and 1 (end).
-     * @protected
+     * @private
      * @param {Number} time - The current time.
      * @returns {Number} - A float number between 0 and 1.
      */

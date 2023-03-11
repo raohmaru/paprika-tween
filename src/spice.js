@@ -13,7 +13,6 @@ const defaults = {
 /**
  * A Spice is an animatable object which properties can be interpolated from its starting
  * value(s) to its end value(s), using an easing function.
- * @extends Seed
  * @example
 import { Spice } from 'paprika';
 import { Cubic } from 'paprika/easing';
@@ -44,7 +43,7 @@ export class Spice extends Seed {
      * @param {function} [options.easing] - The easing function with which calculate the value of the property at a given time.
      * You can use your custom function or a function available at [paprika/easing]{@link module:paprika/easing}.
      * Default is <code>Linear.None</code>.
-     * @param {function} options.render - A callback function that will be called after each [render]{@linkcode Spice#render}.
+     * @param {function} options.render - A callback function that will be called after each [render]{@linkcode Spice#frame}.
      * It receives two arguments: the first being the amount of interpolation applied from <code>0</code> to <code>1</code>,
      * and the second an object with the properties interpolated for the given time.
      * @param {function} [options.onEnd] - Function called when the interpolation reaches the end. It receive an argument as
