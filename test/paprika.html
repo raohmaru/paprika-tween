@@ -133,7 +133,7 @@
 
         // ---------------------------------------------------------------
         let spiceS;
-        const mortar = new Mortar(delta => spiceS.frame());
+        const mortar = new Mortar((time, delta) => spiceS.frame());
         $toy1.addEventListener('click', e => {
             const size = $toy1.clientWidth;
             spiceS = new Spice({
@@ -199,7 +199,7 @@
                     })
                 )
                 .start();
-            mortero = new Mortar((delta, time) => {
+            mortero = new Mortar((time, delta) => {
                 recipe.frame(time);
             });
             mortero.start();

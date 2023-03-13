@@ -22,7 +22,7 @@ spice.dispose();
 class Sweetie extends Spice {
     constructor(options) {
         super(options);
-        this._mortar = new Mortar((delta, time) => this.frame(time));
+        this._mortar = new Mortar((time) => this.frame(time));
     }
     /** @private */
     start() {

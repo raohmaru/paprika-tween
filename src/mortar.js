@@ -27,8 +27,8 @@ mortar.start();
 export class Mortar {
     /**
      * Creates a new instance of the Mortar object.
-     * @param {function} [cb] - The function to be called at the given frame rate. It receives two arguments: the elapsed
-     * time since the previous frame, and the time since it started.
+     * @param {function} [cb] - The function to be called at the given frame rate. It receives two arguments: the time since it started,
+     * and the elapsed time since the previous frame.
      * @param {Number} [fps=60] - The integer number of times to call the callback function per second (frames per second).
      * Number must be an integer.
      * @since 1.0.0
@@ -106,7 +106,7 @@ mortar.start();
         if (delta >= this._fpsInterval) {
             // Adjust next execution time in case this frame took longer to execute
             this._previousDeltaTime = currentTime - (delta % this._fpsInterval);
-            this._cb(currentTime - this._previousTime, currentTime);
+            this._cb(currentTime, currentTime - this._previousTime);
             this._previousTime = currentTime;
         }
         if (this._onFrame) {
