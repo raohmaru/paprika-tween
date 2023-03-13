@@ -85,8 +85,8 @@ class Sweetie extends Spice {
  * The function <code>sweet()</code> creates a tween animation that will run for the given duration, interpolating the
  * given properties from start to end by using an easing function.<br>
  * <code>sweet()</code> returns a [thenable object]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables}
- * which can be chained with the [then()]{@linkcode https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then}
- * or awaited with the [await]{@linkcode https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await} keyword
+ * which can be chained with the method [then()]{@linkcode https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then}
+ * or awaited with the keyword [await]{@linkcode https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await}
  * to create animations.
  * @param {Object} options
  * @param {number} options.duration - The duration of the interpolation. The time scale should be the same as the

@@ -104,7 +104,7 @@ recipe.frame(performance.now() + 1800);
         if (!this._spices.length) {
             return;
         }
-        time ??= window.performance.now();
+        time ??= performance.now();
         let elapsed = this.elapse(time);
         // Don't render if the elapsed time has not changed
         if (this._elapsed === elapsed) {

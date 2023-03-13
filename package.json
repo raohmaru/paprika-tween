@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "Spicy JavaScript animation engine",
   "browser": "./dist/paprika.min.js",
-  "main": "./dist/paprika.cjs",
   "exports": {
-    "import": "./dist/paprika.js",
-    "require": "./dist/paprika.cjs",
-    "easing": "./dist/easing.js"
+    ".": {
+      "import": "./dist/paprika.js",
+      "require": "./dist/paprika.cjs"
+    },
+    "./easing": {
+      "import": "./dist/easing.js",
+      "require": "./dist/easing.cjs"
+    }
   },
   "type": "module",
   "types": "index.d.ts",
@@ -15,7 +19,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "npm run build:dist && npm run build:es5 && npm run build:node",
+    "build": "npm run build:dev && npm run build:dist && npm run build:es5 && npm run build:node",
     "build:dev": "node build.mjs",
     "build:dist": "node build.mjs --env=prod",
     "build:es5": "node build.mjs --env=es5",

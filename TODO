@@ -1,3 +1,5 @@
 * https://github.com/jeremyckahn/shifty
-* .d.ts https://stackoverflow.com/questions/12687779/how-do-you-produce-a-d-ts-typings-definition-file-from-an-existing-javascript
+* .d.ts https://stackoverflow.com/questions/12687779/how-do-you-produce-a-d-ts-typings-definition-file-from-an-existing-javascript  
+  https://docs.npmjs.com/cli/v9/configuring-npm/package-json#files  
+  "types": "types.d.ts",
 * unit tests

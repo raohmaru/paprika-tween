@@ -44,7 +44,7 @@ export class Mortar {
      * @since 1.0.0
      */
     start() {
-        this._startTime = window.performance.now();
+        this._startTime = performance.now();
         this._previousTime = this._startTime;
         this._previousDeltaTime = this._startTime;
         this._pausedTime = 0;
@@ -59,14 +59,14 @@ export class Mortar {
      */
     pause() {
         this._running = false;
-        this._previousPauseTime = window.performance.now();
+        this._previousPauseTime = performance.now();
     }
     /**
      * Resumes the frame-by-frame loop.
      * @since 1.0.0
      */
     resume() {
-        const now = window.performance.now();
+        const now = performance.now();
         this._pausedTime += now - this._previousPauseTime;
         this._running = true;
         this.frame(now);
@@ -110,7 +110,7 @@ mortar.start();
             this._previousTime = currentTime;
         }
         if (this._onFrame) {
-            window.requestAnimationFrame(this._onFrame);
+            requestAnimationFrame(this._onFrame);
         }
     }
     /**
@@ -122,7 +122,7 @@ mortar.start();
     }
     /**
      * Returns the time since the Mortar started.
-     * @type {(DOMHighResTimeStamp|number)}
+     * @type {DOMHighResTimeStamp}
      */
     get time() {
         return this._previousTime;

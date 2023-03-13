@@ -67,7 +67,7 @@ const spice = new Spice({ ... });
 spice.start(5);
      */
     start(time) {
-        this._startTime = time ?? window.performance.now();
+        this._startTime = time ?? performance.now();
         this._startTime += this.delay;
         this._interpolated = Object.assign(Object.create(null), this.to);
     }
@@ -91,7 +91,7 @@ spice.start(0);
 spice.frame(2);
      */
     frame(time) {
-        time ??= window.performance.now();
+        time ??= performance.now();
         let elapsed = this.elapse(time);
         // Don't render if the elapsed time has not changed
         if (this._elapsed === elapsed) {
