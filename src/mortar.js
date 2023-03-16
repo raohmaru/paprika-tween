@@ -20,7 +20,7 @@ const spice = new Spice({
 const mixer = new Mixer();
 mixer.add(spice)
      .start();
-const mortar = new Mortar((delta, time) => mixer.frame(time));
+const mortar = new Mortar((time) => mixer.frame(time));
 mortar.start();
  * @since 1.0.0
  */
@@ -28,7 +28,7 @@ export class Mortar {
     /**
      * Creates a new instance of the Mortar object.
      * @param {function} [cb] - The function to be called at the given frame rate. It receives two arguments: the time since it started,
-     * and the elapsed time since the previous frame.
+     * and the elapsed time since the previous frame (or delta time).
      * @param {Number} [fps=60] - The integer number of times to call the callback function per second (frames per second).
      * Number must be an integer.
      * @since 1.0.0
@@ -89,7 +89,7 @@ export class Mortar {
      * @since 1.0.0
      * @example
 import { Mortar } from 'paprika-tween';
-function loop(delta, time) {
+function loop(time, delta) {
     character.left += character.speed * delta;
 }
 const mortar = new Mortar(loop, 10);
