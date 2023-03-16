@@ -26,35 +26,4 @@ export class Seed {
         }
         return elapsed;
     }
-    /**
-     * Jumps the interpolation to the end values (this is, moves the animation to the end).
-     * @memberof Seed
-     * @since 1.0.0
-     */
-    end() {
-        this.frame(this._startTime + this.duration);
-    }
-    /**
-     * Resets the interpolation by setting it to the initial values (this is, moves the animation to the beginning).
-     * @since 1.0.0
-     */
-    reset() {
-        this.frame(this._startTime);
-    }
-    /**
-     * Returns whether the interpolation has started or not.
-     * @returns {Boolean} - <code>true</code> if it has started, <code>false</code> otherwise.
-     * @since 1.0.0
-     */
-    hasStarted() {
-        return this._elapsed > 0;
-    }
-    /**
-     * Returns whether the interpolation has ended or not.
-     * @returns {Boolean} - <code>true</code> if it has ended, <code>false</code> otherwise.
-     * @since 1.0.0
-     */
-    hasEnded() {
-        return this._elapsed === 1;
-    }
 }
