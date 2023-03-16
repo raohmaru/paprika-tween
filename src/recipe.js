@@ -10,16 +10,16 @@ const defaults = {
 import { Mixer, Recipe, Spice } from 'paprika';
 const spice1 = new Spice({ ... });
 const spice2 = new Spice({ ... });
-const recipe = new Recipe({ onEnd: (r) => console.log(r) });
+const recipe = new Recipe({ onEnd: () => cancelAnimationFrame(rafID) });
 recipe.add(spice1, spice2);
 const mixer = new Mixer();
 mixer.add(recipe)
      .start();
 function loop(timestamp) {
     mixer.frame(timestamp);
-    requestAnimationFrame(loop);
+    rafID = requestAnimationFrame(loop);
 }
-requestAnimationFrame(loop);
+let rafID = requestAnimationFrame(loop);
  * @since 1.0.0
  */
 export class Recipe extends Seed {
@@ -33,7 +33,7 @@ export class Recipe extends Seed {
     constructor(options) {
         super();
         Object.assign(this, defaults, options);
-        this._spices = [];
+        this.spices = [];
     }
     /**
      * Adds one or more [spices]{@link Spice}.
@@ -48,7 +48,7 @@ new Recipe().add(spice1, spice2);
      */
     add(...rest) {
         for (let i = 0; i < rest.length; i++) {
-            this._spices.push(rest[i]);
+            this.spices.push(rest[i]);
         }
         return this;
     }
@@ -68,14 +68,18 @@ recipe.start(1000);
     start(time) {
         let spice;
         let duration = 0;
-        for (let i = 0; i < this._spices.length; i++) {
-            spice = this._spices[i];
-            spice.delay += duration;
+        for (let i = 0; i < this.spices.length; i++) {
+            spice = this.spices[i];
+            if (!this._elapsed) {
+                spice.delay += duration;
+                duration = spice.duration + spice.delay;
+            }
             spice.start(time);
-            duration = spice.duration + spice.delay;
         }
-        this._startTime = this._spices[0]._startTime;
-        this.duration = duration;
+        this._startTime = this.spices[0]._startTime;
+        if (!this._elapsed) {
+            this.duration = duration;
+        }
         return this;
     }
     /**
@@ -101,7 +105,7 @@ const recipe = new Recipe().add(spice1, spice2)
 recipe.frame(performance.now() + 1800);
      */
     frame(time) {
-        if (!this._spices.length) {
+        if (!this.spices.length) {
             return;
         }
         time ??= performance.now();
@@ -111,8 +115,8 @@ recipe.frame(performance.now() + 1800);
             return;
         }
         this._elapsed = elapsed;
-        for (let i = 0; i < this._spices.length; i++) {
-            this._spices[i].frame(time);
+        for (let i = 0; i < this.spices.length; i++) {
+            this.spices[i].frame(time);
         }
         if (elapsed === 1) {
             this.onEnd(this);
@@ -124,10 +128,10 @@ recipe.frame(performance.now() + 1800);
      * @since 1.0.0
      */
     dispose() {
-        for (let i = this._spices.length - 1; i !== -1; i--) {
-            this._spices[i].dispose();
+        for (let i = this.spices.length - 1; i !== -1; i--) {
+            this.spices[i].dispose();
         }
-        this._spices.length = 0;
+        this.spices.length = 0;
         this.onEnd = null;
     }
 }
