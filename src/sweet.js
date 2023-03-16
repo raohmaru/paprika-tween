@@ -63,7 +63,7 @@ class Sweetie extends Spice {
             };
             if (options) {
                 this.from = this.to;
-                Object.assign(this, options);
+                this.update(options);
             }
             this.start();
         });
