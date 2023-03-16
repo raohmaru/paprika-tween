@@ -9,17 +9,17 @@ const target = {
     node: ['node14']
 };
 const format = {
-    es5: 'iife',
+    iife: 'iife',
     node: 'cjs'
 };
 const outfile = {
     dev:  `${outDir}/[name].js`,
     prod: `${outDir}/[name].min.js`,
-    es5:  `${outDir}/[name].es5.min.js`,
+    iife:  `${outDir}/[name].iife.min.js`,
     node: `${outDir}/[name].cjs`
 };
 const globalName =  {
-    es5: '[name]'
+    iife: '[name]'
 };
 
 function getConfig(src, name, gName, env) {
@@ -28,7 +28,7 @@ function getConfig(src, name, gName, env) {
         outfile: outfile[env].replace('[name]', name),
         bundle: true,
         sourcemap: env === 'dev',
-        minify: env === 'prod' || env === 'es5',
+        minify: env === 'prod' || env === 'iife',
         platform: platform[env] || 'browser',
         target: target[env] || ['es2020'],
         format: format[env] || 'esm',

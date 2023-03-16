@@ -56,15 +56,15 @@
     <div id="toy2"></div>
     <canvas id="canvas" width="320" height="240"></canvas>
     
-    <!-- <script src="../dist/paprika-tween.es5.min.js"></script>
-    <script src="../dist/easing.es5.min.js"></script> -->
+    <script src="../dist/paprika-tween.iife.min.js"></script>
+    <script src="../dist/easing.iife.min.js"></script>
     <script type="module">
-        import { Mixer, Spice, Recipe, Mortar, sweet } from '../src/index.js';
-        import { Cubic, Elastic, Sinusoidal } from '../src/easing/index.js';
-        // import { Mixer, Spice, Recipe, Mortar, sweet } from '../dist/paprika-tween.js';
-        // import { Cubic, Elastic } from '../dist/easing.js';
-        // const { Mixer, Spice, Recipe, Mortar, sweet } = Paprika;
-        // const { Cubic, Elastic } = Easing;
+        // import { Mixer, Spice, Recipe, Mortar, sweet } from '../src/index.js';
+        // import { Cubic, Elastic, Sinusoidal } from '../src/easing/index.js';
+        // import { Mixer, Spice, Recipe, Mortar, sweet } from '../dist/paprika-tween.min.js';
+        // import { Cubic, Elastic, Sinusoidal } from '../dist/easing.min.js';
+        const { Mixer, Spice, Recipe, Mortar, sweet } = Paprika;
+        const { Cubic, Elastic, Sinusoidal } = Easing;
         
         const $output = document.getElementById('output');
         const $toy1 = document.getElementById('toy1');

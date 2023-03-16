@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Spicy JavaScript animation engine",
   "browser": "./dist/paprika-tween.min.js",
+  "main": "./dist/paprika-tween.min.js",
   "exports": {
     ".": {
       "import": "./dist/paprika-tween.js",
@@ -19,10 +20,10 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "npm run build:dev && npm run build:dist && npm run build:es5 && npm run build:node",
+    "build": "npm run build:dev && npm run build:dist && npm run build:iife && npm run build:node",
     "build:dev": "node build.mjs",
     "build:dist": "node build.mjs --env=prod",
-    "build:es5": "node build.mjs --env=es5",
+    "build:iife": "node build.mjs --env=iife",
     "build:node": "node build.mjs --env=node",
     "lint": "eslint src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -49,5 +50,10 @@
     "jsdoc": "^4.0.2",
     "minami": "^1.2.3",
     "taffydb": "^2.7.3"
-  }
+  },
+  "files": [
+    "dist",
+    "docs",
+    "src"
+  ]
 }
