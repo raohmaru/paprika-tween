@@ -1,12 +1,12 @@
 {
-  "name": "paprika",
+  "name": "paprika-tween",
   "version": "1.0.0",
   "description": "Spicy JavaScript animation engine",
-  "browser": "./dist/paprika.min.js",
+  "browser": "./dist/paprika-tween.min.js",
   "exports": {
     ".": {
-      "import": "./dist/paprika.js",
-      "require": "./dist/paprika.cjs"
+      "import": "./dist/paprika-tween.js",
+      "require": "./dist/paprika-tween.cjs"
     },
     "./easing": {
       "import": "./dist/easing.js",
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raohmaru/paprika.git"
+    "url": "git+https://github.com/raohmaru/paprika-tween.git"
   },
   "keywords": [
     "tweening",
@@ -40,9 +40,9 @@
   "author": "raohmaru",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/raohmaru/paprika/issues"
+    "url": "https://github.com/raohmaru/paprika-tween/issues"
   },
-  "homepage": "https://github.com/raohmaru/paprika",
+  "homepage": "https://github.com/raohmaru/paprika-tween",
   "devDependencies": {
     "esbuild": "0.17.11",
     "eslint": "^8.35.0",

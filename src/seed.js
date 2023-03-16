@@ -9,7 +9,7 @@ export class Seed {
      * @since 1.0.0
      */
     constructor() {
-        this._elapsed = 0;
+        this.elapsed = 0;
     }
     /**
      * Calculates the current elapsed time of the interpolation as a float number between 0 (start) and 1 (end).

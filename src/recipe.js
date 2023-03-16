@@ -7,7 +7,7 @@ const defaults = {
 /**
  * A Recipe object can contain any number of [spices]{@link Spice} which will be interpolated <i>sequentially</i>, this is, one each another.
  * @example
-import { Mixer, Recipe, Spice } from 'paprika';
+import { Mixer, Recipe, Spice } from 'paprika-tween';
 const spice1 = new Spice({ ... });
 const spice2 = new Spice({ ... });
 const recipe = new Recipe({ onEnd: () => cancelAnimationFrame(rafID) });
@@ -41,7 +41,7 @@ export class Recipe extends Seed {
      * @returns {Recipe} - The current instance of the Recipe.
      * @since 1.0.0
     * @example
-import { Recipe, Spice } from 'paprika';
+import { Recipe, Spice } from 'paprika-tween';
 const spice1 = new Spice({ ... });
 const spice2 = new Spice({ ... });
 new Recipe().add(spice1, spice2);
@@ -61,7 +61,7 @@ new Recipe().add(spice1, spice2);
      * @param {(DOMHighResTimeStamp|number)} [time] - The initial number from where to start the animation.
      * @since 1.0.0
     * @example
-import { Recipe } from 'paprika';
+import { Recipe } from 'paprika-tween';
 const recipe = new Recipe();
 recipe.start(1000);
      */
@@ -70,14 +70,14 @@ recipe.start(1000);
         let duration = 0;
         for (let i = 0; i < this.spices.length; i++) {
             spice = this.spices[i];
-            if (!this._elapsed) {
+            if (!this.elapsed) {
                 spice.delay += duration;
                 duration = spice.duration + spice.delay;
             }
             spice.start(time);
         }
         this._startTime = this.spices[0]._startTime;
-        if (!this._elapsed) {
+        if (!this.elapsed) {
             this.duration = duration;
         }
         return this;
@@ -91,7 +91,7 @@ recipe.start(1000);
      * @param {(DOMHighResTimeStamp|number)} [time] - The amount of time to interpolate since the animations started.
      * @since 1.0.0
     * @example
-import { Recipe, Spice } from 'paprika';
+import { Recipe, Spice } from 'paprika-tween';
 const spice1 = new Spice({
     ...,
     duration: 1700
@@ -111,10 +111,10 @@ recipe.frame(performance.now() + 1800);
         time ??= performance.now();
         let elapsed = this.elapse(time);
         // Don't render if the elapsed time has not changed
-        if (this._elapsed === elapsed) {
+        if (this.elapsed === elapsed) {
             return;
         }
-        this._elapsed = elapsed;
+        this.elapsed = elapsed;
         for (let i = 0; i < this.spices.length; i++) {
             this.spices[i].frame(time);
         }

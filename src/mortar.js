@@ -10,12 +10,12 @@
  * be sure to use the <code>delta</code> argument passed to the callback function to calculate how much the animation
  * will progress in a frame.
  * @example
-import { Mixer, Spice, Mortar } from 'paprika';
+import { Mixer, Spice, Mortar } from 'paprika-tween';
 const spice = new Spice({
     duration: 5000,
     from: { scale: 1 },
     to: { scale: 2.5 },
-    render: (v, props) => { ... }
+    render: (props, interpolation) => { ... }
 });
 const mixer = new Mixer();
 mixer.add(spice)
@@ -88,7 +88,7 @@ export class Mortar {
      * animation will progress in a frame.
      * @since 1.0.0
      * @example
-import { Mortar } from 'paprika';
+import { Mortar } from 'paprika-tween';
 function loop(delta, time) {
     character.left += character.speed * delta;
 }

@@ -2,7 +2,7 @@
 
 First of all, thanks!  Community contribution is what makes open source great.
 If you find a bug or would like to make a feature request, please report it on
-the [issue tracker](https://github.com/raohmaru/paprika/issues).  If you
+the [issue tracker](https://github.com/raohmaru/paprika-tween/issues).  If you
 would like to make changes to the code yourself, read on!
 
 ## Getting started

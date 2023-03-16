@@ -34,11 +34,11 @@ function getConfig(src, name, gName, env) {
         format: format[env] || 'esm',
         globalName: globalName[env]?.replace('[name]', gName),
         banner: {
-            js: '/*! For license information please see https://github.com/raohmaru/paprika/blob/master/LICENSE */'
+            js: '/*! For license information please see https://github.com/raohmaru/paprika-tween/blob/master/LICENSE */'
         },
         logLevel: 'info'
     };
 }
 
-await esbuild.build(getConfig('src/index.js', 'paprika', 'Paprika', env));
+await esbuild.build(getConfig('src/index.js', 'paprika-tween', 'Paprika', env));
 await esbuild.build(getConfig('src/easing/index.js', 'easing', 'Easing', env));

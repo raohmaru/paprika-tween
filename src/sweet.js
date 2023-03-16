@@ -1,14 +1,14 @@
 import { Spice, Mortar } from './index.js';
 
 /**
- * A Sweetie is a {@link Spice} which can be animated by itself. It is created when calling the method [sweet()]{@linkcode module:paprika/sweet}.
+ * A Sweetie is a {@link Spice} which can be animated by itself. It is created when calling the method [sweet()]{@linkcode module:paprika-tween/sweet}.
  * @example
-import { sweet } from 'paprika';
+import { sweet } from 'paprika-tween';
 const { sweetie, spice } = await sweet({
     duration: 2000,
     from: { width: 100 },
     to:   { width: 200 }
-    render: (v, props) => { ... }
+    render: (props, interpolation) => { ... }
 });
 spice.pause();
 spice.resume();
@@ -94,7 +94,7 @@ class Sweetie extends Spice {
  * @param {Object} options.from - An object with key/value pairs of numeric properties to interpolate from.
  * @param {Object} options.to - An object with the numeric properties to interpolate to.
  * @param {function} [options.easing] - The easing function with which calculate the value of the property at a given time.
- * You can use your custom function or a function available at [paprika/easing]{@link module:paprika/easing}.
+ * You can use your custom function or a function available at [paprika-tween/easing]{@link module:paprika-tween/easing}.
  * Default is <code>Linear.None</code>.
  * @param {function} options.render - A callback function that will be called after each [render]{@linkcode Spice#frame}.
  * It receives two arguments: the first being the amount of interpolation applied from <code>0</code> to <code>1</code>,
@@ -103,15 +103,15 @@ class Sweetie extends Spice {
  * an object with the properties interpolated to its end values.
  * @returns {Promise} - A Promise that is resolved with two arguments: a <code>sweetie()</code> function to continue with
  * animation, and the {@link Sweetie} instance which properties are interpolated.
- * @module paprika/sweet
+ * @module paprika-tween/sweet
  * @example
-import { sweet } from 'paprika';
+import { sweet } from 'paprika-tween';
 const { sweetie } = await sweet({
     duration: 500,
     from: { size: 0 },
     to:   { size: 10 }
-    render: (v, props) => {
-        obj.style.borderWidth = `${props.size}px`;
+    render: ({ size }) => {
+        obj.style.borderWidth = `${size}px`;
     }
 });
 await sweetie({

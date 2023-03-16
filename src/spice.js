@@ -14,18 +14,18 @@ const defaults = {
  * A Spice is an animatable object which properties can be interpolated from its starting
  * value(s) to its end value(s), using an easing function.
  * @example
-import { Spice } from 'paprika';
-import { Cubic } from 'paprika/easing';
+import { Spice } from 'paprika-tween';
+import { Cubic } from 'paprika-tween/easing';
 const spice = new Spice({
     duration: 45,
     delay: 2,
     easing: Cubic.InOut,
     from: { size: 10 },
     to: { size: 520 },
-    render: (v, props) => {
-       console.log(props.size);
+    render: ({ size }) => {
+       console.log(size);
     },
-    onEnd: (props) => console.log(props)
+    onEnd: ({ size }) => console.log(props)
 });
 spice.start(0);
 spice.frame(15);
@@ -41,11 +41,12 @@ export class Spice extends Seed {
      * @param {Object} options.from - An object with key/value pairs of numeric properties to interpolate from.
      * @param {Object} options.to - An object with the numeric properties to interpolate to.
      * @param {function} [options.easing] - The easing function with which calculate the value of the property at a given time.
-     * You can use your custom function or a function available at [paprika/easing]{@link module:paprika/easing}.
-     * Default is <code>Linear.None</code>.
+     * You can use your custom function or a function available at [paprika-tween/easing]{@link module:paprika-tween/easing}.
+     * Default is <code>Linear.None</code> (no easing).
      * @param {function} options.render - A callback function that will be called after each [render]{@linkcode Spice#frame}.
-     * It receives two arguments: the first being the amount of interpolation applied from <code>0</code> to <code>1</code>,
-     * and the second an object with the properties interpolated for the given time.
+     * It receives three arguments: the first being an object with the properties interpolated for the given time,
+     * the second the amount of interpolation applied from <code>0</code> to <code>1</code>,
+     * and the third the instance of the current Spice.
      * @param {function} [options.onEnd] - Function called when the interpolation reaches the end. It receive an argument as
      * an object with the properties interpolated to its end values.
      * @since 1.0.0
@@ -62,7 +63,7 @@ export class Spice extends Seed {
      * @param {(DOMHighResTimeStamp|number)} [time] - The initial number from where to start the animation.
      * @since 1.0.0
     * @example
-import { Spice } from 'paprika';
+import { Spice } from 'paprika-tween';
 const spice = new Spice({ ... });
 spice.start(5);
      */
@@ -80,12 +81,12 @@ spice.start(5);
      * @param {(DOMHighResTimeStamp|number)} [time] - The amount of time to interpolate since the animations started.
      * @since 1.0.0
     * @example
-import { Spice } from 'paprika';
+import { Spice } from 'paprika-tween';
 const spice = new Spice({
     duration: 10,
     from: { width: 100 },
     to: { width: 550 },
-    render: (v, props) => { ... }
+    render: (props) => { ... }
 });
 spice.start(0);
 spice.frame(2);
@@ -94,10 +95,10 @@ spice.frame(2);
         time ??= performance.now();
         let elapsed = this.elapse(time);
         // Don't render if the elapsed time has not changed
-        if (this._elapsed === elapsed) {
+        if (this.elapsed === elapsed) {
             return;
         }
-        this._elapsed = elapsed;
+        this.elapsed = elapsed;
         const value = this.easing(elapsed);
         let start,
             end,
@@ -107,7 +108,7 @@ spice.frame(2);
             end = this.to[key];
             this._interpolated[key] = start + (end - start) * value;
         }
-        this.render(value, this._interpolated, this);
+        this.render(this._interpolated, value, this);
         if (elapsed === 1) {
             this.onEnd(this._interpolated, this);
         }

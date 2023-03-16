@@ -6,13 +6,13 @@
  * [requestAnimationFrame()]{@link https://developer.mozilla.org/en/docs/Web/API/Window/requestAnimationFrame}
  * or an instance of the {@link Mortar} class.
  * @example
-import { Mixer, Spice } from 'paprika';
+import { Mixer, Spice } from 'paprika-tween';
 const spice = new Spice({
     duration: 1000,
-    from: { x: 0 },
-    to: { x: 200 },
-    render: (v, props) => {
-       console.log(props.x);
+    from: { x: 0, y: 42 },
+    to: { x: 200, y: 120 },
+    render: (props, interpolation) => {
+       console.log(props.x, props.y, interpolation);
     }
 });
 const mixer = new Mixer();
@@ -40,7 +40,7 @@ export class Mixer {
      * @returns {Mixer} - The current instance of the Mixer.
      * @since 1.0.0
     * @example
-import { Mixer, Spice } from 'paprika';
+import { Mixer, Spice } from 'paprika-tween';
 const spice1 = new Spice({ ... });
 const spice2 = new Spice({ ... });
 const mixer = new Mixer();
@@ -62,7 +62,7 @@ mixer.add(spice1, spice2);
      * @returns {Mixer} - The current instance of the Mixer.
      * @since 1.0.0
     * @example
-import { Mixer } from 'paprika';
+import { Mixer } from 'paprika-tween';
 const mixer = new Mixer();
 mixer.start(0);
      */
@@ -91,12 +91,12 @@ mixer.start(0);
      * @param {(DOMHighResTimeStamp|number)} [time] - The amount of time to interpolate since the animations started.
      * @since 1.0.0
     * @example
-import { Mixer, Spice } from 'paprika';
+import { Mixer, Spice } from 'paprika-tween';
 const spice = new Spice({
     duration: 10,
     from: { width: 100 },
     to: { width: 550 },
-    render: (v, props) => { ... }
+    render: (props) => { ... }
 });
 const mixer = new Mixer(0);
 mixer.add(spice)

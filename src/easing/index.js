@@ -1,4 +1,4 @@
-/** @module paprika/easing */
+/** @module paprika-tween/easing */
 
 export { Back } from './back.js';
 export { Bounce } from './bounce.js';

@@ -56,12 +56,12 @@
     <div id="toy2"></div>
     <canvas id="canvas" width="320" height="240"></canvas>
     
-    <!-- <script src="../dist/paprika.es5.min.js"></script>
+    <!-- <script src="../dist/paprika-tween.es5.min.js"></script>
     <script src="../dist/easing.es5.min.js"></script> -->
     <script type="module">
         import { Mixer, Spice, Recipe, Mortar, sweet } from '../src/index.js';
         import { Cubic, Elastic, Sinusoidal } from '../src/easing/index.js';
-        // import { Mixer, Spice, Recipe, Mortar, sweet } from '../dist/paprika.js';
+        // import { Mixer, Spice, Recipe, Mortar, sweet } from '../dist/paprika-tween.js';
         // import { Cubic, Elastic } from '../dist/easing.js';
         // const { Mixer, Spice, Recipe, Mortar, sweet } = Paprika;
         // const { Cubic, Elastic } = Easing;
@@ -74,8 +74,8 @@
             duration: 1,
             from: { radius: 50 },
             to: { radius: 0 },
-            render: (v, props) => {
-                $toy2.style.borderRadius = `${props.radius}%`;
+            render: ({radius}) => {
+                $toy2.style.borderRadius = `${radius}%`;
             },
             onEnd: (props) => console.log('spiceA')
         });
@@ -84,7 +84,7 @@
             delay: 2,
             from: { opacity: 1 },
             to: { opacity: 0 },
-            render: (v, props) => {
+            render: (props) => {
                 $toy2.style.opacity = `${props.opacity}`;
             },
             onEnd: (props) => console.log('spiceB')
@@ -94,7 +94,7 @@
             easing: Cubic.InOut,
             from: { x: 0 },
             to: { x: 200 },
-            render: (v, props) => {
+            render: (props, v) => {
                 $toy1.style.left = `${props.x}px`;
                 $output.textContent = `left: ${v} / ${props.x}`;
             },
@@ -105,7 +105,7 @@
             to: {
                 color: 16777215
             },
-            render: (v, props) => {
+            render: (props) => {
                 const hex = props.color.toFixed();
                 const r = (hex >> 16) & 0xFF;
                 const g = (hex >> 8) & 0xFF;
@@ -118,7 +118,7 @@
             duration: 2,
             from: { y: 0 },
             to: { y: 200 },
-            render: (v, props) => {
+            render: (props, v) => {
                 $toy1.style.paddingTop = `${props.y}px`;
                 $output.textContent = `paddingTop: ${v} / ${props.y}`;
             }
@@ -127,7 +127,7 @@
             duration: 0.5, 
             from: { rotation: 0 },
             to:   { rotation: 360 },
-            render: (v, props) => {
+            render: (props, v) => {
                 $toy1.style.transform = `rotate(${props.rotation}deg)`;
                 $output.textContent = `rotation: ${v} / ${props.rotation}`;
             }
@@ -156,7 +156,7 @@
                     width: size + 25,
                     height: size + 25
                 },
-                render: (v, props) => {
+                render: (props, v) => {
                     $toy1.style.width = `${props.width}px`;
                     $toy1.style.height = `${props.height}px`;
                     $output.textContent = `size: ${v} / ${props.width}`;
@@ -184,7 +184,7 @@
                     easing: Elastic.Out,
                     from: { rotation: 0 },
                     to:   { rotation: 360 },
-                    render: (v, props) => {
+                    render: (props, v) => {
                         $toy1.style.transform = `rotate(${props.rotation}deg)`;
                         $output.textContent = `rotation: ${v} / ${props.rotation}`;
                     }
@@ -194,7 +194,7 @@
                     easing: Elastic.In,
                     from: { rotation: 360 },
                     to:   { rotation: 0 },
-                    render: (v, props) => {
+                    render: (props, v) => {
                         $toy1.style.transform = `rotate(${props.rotation}deg)`;
                         $output.textContent = `rotation: ${v} / ${props.rotation}`;
                     }
@@ -222,7 +222,7 @@
                 return;
             }
             const { sweetie, spice } = await sweet({
-                render: (v, props) => {
+                render: (props, v) => {
                     $toy1.style.borderWidth = `${props.size}px`;
                     $output.textContent = `border: ${v} / ${props.size}`;
                 }
@@ -278,11 +278,11 @@
                     return new Spice({
                         ...randomize(),
                         easing: Cubic.InOut,
-                        render: (v, props, spice) => {
+                        render: (props, v, spice) => {
                             offCtx.fillStyle = 'green';
                             offCtx.fillRect(
                                 props.x | 0,
-                                (props.y - (200 * Sinusoidal.In(spice._elapsed))) | 0,
+                                (props.y - (200 * Sinusoidal.In(spice.elapsed))) | 0,
                                 props.size | 0,
                                 props.size | 0
                             );
