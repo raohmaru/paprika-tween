@@ -35,6 +35,14 @@
             border-radius: 50%;
             background: #ffcc00;
         }
+        #canvas {
+            position: absolute;
+            top: 300px;
+            width: 640px;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
@@ -46,12 +54,13 @@
     <output id="output">0 / 0</output>
     <div id="toy1"></div>
     <div id="toy2"></div>
+    <canvas id="canvas" width="320" height="240"></canvas>
     
     <!-- <script src="../dist/paprika.es5.min.js"></script>
     <script src="../dist/easing.es5.min.js"></script> -->
     <script type="module">
         import { Mixer, Spice, Recipe, Mortar, sweet } from '../src/index.js';
-        import { Cubic, Elastic } from '../src/easing/index.js';
+        import { Cubic, Elastic, Sinusoidal } from '../src/easing/index.js';
         // import { Mixer, Spice, Recipe, Mortar, sweet } from '../dist/paprika.js';
         // import { Cubic, Elastic } from '../dist/easing.js';
         // const { Mixer, Spice, Recipe, Mortar, sweet } = Paprika;
@@ -163,6 +172,34 @@
 
         // ---------------------------------------------------------------
         const $play = document.getElementById('play');
+        const recipe = new Recipe({ onEnd: (recipe) => {
+                // recipe.dispose();
+                mortero.stop();
+                mortero = null;
+                $play.textContent = '▶';
+            }})
+            .add(
+                new Spice({
+                    duration: 1000, 
+                    easing: Elastic.Out,
+                    from: { rotation: 0 },
+                    to:   { rotation: 360 },
+                    render: (v, props) => {
+                        $toy1.style.transform = `rotate(${props.rotation}deg)`;
+                        $output.textContent = `rotation: ${v} / ${props.rotation}`;
+                    }
+                }),
+                new Spice({
+                    duration: 1000, 
+                    easing: Elastic.In,
+                    from: { rotation: 360 },
+                    to:   { rotation: 0 },
+                    render: (v, props) => {
+                        $toy1.style.transform = `rotate(${props.rotation}deg)`;
+                        $output.textContent = `rotation: ${v} / ${props.rotation}`;
+                    }
+                })
+            )
         let mortero;
         $play.addEventListener('click', e => {
             e.currentTarget.textContent = mortero?.running ? '▶' : '⏸︎';
@@ -170,35 +207,7 @@
                 mortero.running ? mortero.pause() : mortero.resume();
                 return;
             }
-            const recipe = new Recipe({ onEnd: (recipe) => {
-                    recipe.dispose();
-                    mortero.stop();
-                    mortero = null;
-                    $play.textContent = '▶';
-                }})
-                .add(
-                    new Spice({
-                        duration: 1000, 
-                        easing: Elastic.Out,
-                        from: { rotation: 0 },
-                        to:   { rotation: 360 },
-                        render: (v, props) => {
-                            $toy1.style.transform = `rotate(${props.rotation}deg)`;
-                            $output.textContent = `rotation: ${v} / ${props.rotation}`;
-                        }
-                    }),
-                    new Spice({
-                        duration: 1000, 
-                        easing: Elastic.In,
-                        from: { rotation: 360 },
-                        to:   { rotation: 0 },
-                        render: (v, props) => {
-                            $toy1.style.transform = `rotate(${props.rotation}deg)`;
-                            $output.textContent = `rotation: ${v} / ${props.rotation}`;
-                        }
-                    })
-                )
-                .start();
+            recipe.start();
             mortero = new Mortar((time, delta) => {
                 recipe.frame(time);
             });
@@ -233,6 +242,78 @@
             spice.dispose();
             globalSpice = null;
         });
+
+        // ---------------------------------------------------------------
+        ;(function (){
+            const $canvas = document.getElementById('canvas');
+            // const ctx = $canvas.getContext('bitmaprenderer', { alpha: false });
+            const ctx = $canvas.getContext('2d', { alpha: false });
+            const {width, height} = canvas;
+            const offscreen = new OffscreenCanvas(width, height);
+            const offCtx = offscreen.getContext('2d', { alpha: false });
+            const w2 = width >> 1;
+            const h2 = height >> 1;
+            const side = Math.sqrt(width * width + height * height);
+            const mixer = new Mixer();
+            const PI2 = Math.PI * 2;
+            function randomize() {
+                const angle = Math.random() * PI2;
+                return {
+                    duration : Math.random() * 1000 + 3000,
+                    from : { 
+                        x: w2,
+                        y: h2,
+                        size: 2
+                    },
+                    to : {
+                        x: Math.sin(angle) * side + w2,
+                        y: Math.cos(angle) * side + h2,
+                        size: Math.random() * 48 + 2
+                    }
+                }
+            }
+            mixer.add(...(function() {
+                return [...new Array(1000)].map(() => {
+                    const angle = Math.random() * PI2;
+                    return new Spice({
+                        ...randomize(),
+                        easing: Cubic.InOut,
+                        render: (v, props, spice) => {
+                            offCtx.fillStyle = 'green';
+                            offCtx.fillRect(
+                                props.x | 0,
+                                (props.y - (200 * Sinusoidal.In(spice._elapsed))) | 0,
+                                props.size | 0,
+                                props.size | 0
+                            );
+                        },
+                        onEnd: (props, spice) => {
+                            spice.update(randomize());
+                            spice.start();
+                        }
+                    });
+                });
+            }()))
+                .start();
+            function renderCanvas() {
+                offCtx.fillStyle = 'rgba(255 255 255 / 0.1)';
+                offCtx.fillRect(0, 0, width, height);
+                mixer.frame();
+                // ctx.transferFromImageBitmap(offscreen.transferToImageBitmap());  // bitmaprenderer
+                ctx.drawImage(offscreen, 0, 0);
+                rafID = requestAnimationFrame(renderCanvas);
+            }
+            let rafID = requestAnimationFrame(renderCanvas);
+            $canvas.addEventListener('click', () => {
+                if (rafID) {
+                    cancelAnimationFrame(rafID);
+                    rafID = null;
+                } else {
+                    renderCanvas();
+                }
+            });
+        })();
+
     </script>
 </body>
 </html>

@@ -123,4 +123,14 @@ spice.frame(2);
         this.render = null;
         this.onEnd = null;
     }
+    /**
+     * Modifies the properties of the spice with the given object.
+     * @param {Object} options - See [Spice constructor]{@linkcode Spice} for the available properties of the <code>options</code> object.
+     * @returns {Spice}
+     * @since 1.0.0
+     */
+    update(options) {
+        Object.assign(this, options);
+        return this;
+    }
 }

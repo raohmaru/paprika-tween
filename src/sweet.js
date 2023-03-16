@@ -2,7 +2,6 @@ import { Spice, Mortar } from './index.js';
 
 /**
  * A Sweetie is a {@link Spice} which can be animated by itself. It is created when calling the method [sweet()]{@linkcode module:paprika/sweet}.
- * @extends Spice
  * @example
 import { sweet } from 'paprika';
 const { sweetie, spice } = await sweet({
@@ -24,7 +23,7 @@ class Sweetie extends Spice {
         super(options);
         this._mortar = new Mortar((time) => this.frame(time));
     }
-    /** @private */
+
     start() {
         this._mortar.start();
         super.start(this._mortar.time);
