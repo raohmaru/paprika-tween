@@ -40,9 +40,9 @@ mixer.frame(25);
 
 Paprika 🌶 does not request an animation frame to move the tween forwards. You should call the `frame()` method by using
 [`requestAnimationFrame()`](https://developer.mozilla.org/en/docs/Web/API/Window/requestAnimationFrame) or an instance of the
-[Mortar](https://raohmaru.github.io/paprika-tween/docs/Mixer.html) class.
+[Mortar](https://raohmaru.github.io/paprika-tween/Mixer.html) class.
 
-Or you can use a [sweet](https://raohmaru.github.io/paprika-tween/docs/module-paprika_sweet.html) paprika.
+Or you can use a [sweet](https://raohmaru.github.io/paprika-tween/module-paprika_sweet.html) paprika.
 
 ```javascript
 import { sweet } from 'paprika-tween';
@@ -97,9 +97,9 @@ const { Mixer, Spice, Recipe, Mortar, sweet } = require('paprika-tween');
 There are several ways to use Paprika 🌶.
 
 ### Using a Spice
-A [Spice](https://raohmaru.github.io/paprika-tween/docs/Spice.html) is the minimum tweenable object. It can be tweened alone,
-or by adding it to a [Recipe](https://raohmaru.github.io/paprika-tween/docs/Recipe.html) or to a
-[Mixer](https://raohmaru.github.io/paprika-tween/docs/Mixer.html):
+A [Spice](https://raohmaru.github.io/paprika-tween/Spice.html) is the minimum tweenable object. It can be tweened alone,
+or by adding it to a [Recipe](https://raohmaru.github.io/paprika-tween/Recipe.html) or to a
+[Mixer](https://raohmaru.github.io/paprika-tween/Mixer.html):
 ```javascript
 const spice = new Spice({
     duration: 45,
@@ -115,7 +115,7 @@ spice.frame(33);
 ```
 
 ### Using a Recipe
-A [Recipe](https://raohmaru.github.io/paprika-tween/docs/Recipe.html) can contain one or more spices, that will be tweened in sequence.
+A [Recipe](https://raohmaru.github.io/paprika-tween/Recipe.html) can contain one or more spices, that will be tweened in sequence.
 ```javascript
 const spice1 = new Spice({ ... });
 const spice2 = new Spice({ ... });
@@ -126,7 +126,7 @@ recipe.frame(performance.now());
 ```
 
 ### Using a Mixer
-A [Mixer](https://raohmaru.github.io/paprika-tween/docs/Mixer.html) can contain any number of spices or recipes, and all of them will be
+A [Mixer](https://raohmaru.github.io/paprika-tween/Mixer.html) can contain any number of spices or recipes, and all of them will be
 tweened at the same time.
 ```javascript
 const spice = new Spice({ ... });
@@ -156,7 +156,7 @@ function loop(timestamp) {
 let rafID = requestAnimationFrame(loop);
 ```
 
-The [Mortar](https://raohmaru.github.io/paprika-tween/docs/Mortar.html) class can also perform an animation for a given
+The [Mortar](https://raohmaru.github.io/paprika-tween/Mortar.html) class can also perform an animation for a given
 [frames per second](https://en.wikipedia.org/wiki/Frame_rate) on a more performant way by ensuring that the animation is run
 at the same speed regardless of the device and network conditions.
 ```javascript
@@ -169,7 +169,7 @@ mortar.start();
 ```
 
 ### Sweet Paprika 🌶
-The [`sweet()`](https://raohmaru.github.io/paprika-tween/docs/module-paprika_sweet.html) function starts automatically
+The [`sweet()`](https://raohmaru.github.io/paprika-tween/module-paprika_sweet.html) function starts automatically
 an animation, which returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/)
 that can be chained by using its method [`.then()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
 or the [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) keyword.
