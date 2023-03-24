@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+# https://github.com/marketplace/actions/deploy-to-github-pages
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm ci
+      - run: npm run docs
+
+      - uses: JamesIves/github-pages-deploy-action@4
+        with:
+          branch: gh-pages
+          folder: docs
+          clean: true
+          single-commit: true
