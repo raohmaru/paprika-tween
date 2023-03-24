@@ -1,7 +1,11 @@
-* https://github.com/jeremyckahn/shifty
-* gh-pages
-* wiki
-* .d.ts https://stackoverflow.com/questions/12687779/how-do-you-produce-a-d-ts-typings-definition-file-from-an-existing-javascript  
+# TODO
+- [x] https://github.com/jeremyckahn/shifty
+- [x] easing equations
+- [ ] npm
+- [ ] live examples
+- [ ] gh-pages (docs)
+- [ ] wiki / examples
+- [ ] .d.ts https://stackoverflow.com/questions/12687779/how-do-you-produce-a-d-ts-typings-definition-file-from-an-existing-javascript  
   https://docs.npmjs.com/cli/v9/configuring-npm/package-json#files  
   "types": "types.d.ts",
-* unit tests
+- [ ] unit tests

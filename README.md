@@ -32,6 +32,7 @@ const spice2 = new Spice({
 const mixer = new Mixer();
 // Put the spices in the mixer
 mixer.add(spice1, spice2)
+// And start the tweening
      .start(0);
 // Advance to time 25
 mixer.frame(25);
@@ -60,7 +61,7 @@ and store it in your application.
 | URL | Type |
 |:----|:-----|
 | https://unpkg.com/paprika-tween | [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) |
-| https://unpkg.com/dist/paprika-tween.iife.min.js | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
+| https://unpkg.com/paprika-tween/dist/paprika-tween.iife.min.js | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
 
 If you are using [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules),
 then you can import Paprika 🌶 by its URL:
@@ -93,7 +94,7 @@ const { Mixer, Spice, Recipe, Mortar, sweet } = require('paprika-tween');
 ```
 
 ## How to Cook
-There are several ways to use Paprika 🌶:
+There are several ways to use Paprika 🌶.
 
 ### Using a Spice
 A [Spice](https://raohmaru.github.io/paprika-tween/docs/Spice.html) is the minimum tweenable object. It can be tweened alone,
@@ -156,8 +157,8 @@ let rafID = requestAnimationFrame(loop);
 ```
 
 The [Mortar](https://raohmaru.github.io/paprika-tween/docs/Mortar.html) class can also perform an animation for a given
-[frames per second](https://en.wikipedia.org/wiki/Frame_rate) on a more performant way by ensuring the animation is run
-at the same speed regardless of the device.
+[frames per second](https://en.wikipedia.org/wiki/Frame_rate) on a more performant way by ensuring that the animation is run
+at the same speed regardless of the device and network conditions.
 ```javascript
 const spice = new Spice({ ... });
 const mixer = new Mixer();
@@ -171,7 +172,8 @@ mortar.start();
 The [`sweet()`](https://raohmaru.github.io/paprika-tween/docs/module-paprika_sweet.html) function starts automatically
 an animation, which returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/)
 that can be chained by using its method [`.then()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
-or [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await).
+or the [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) keyword.
+
 Chained animations using the returned function `sweetie()` will reuse the `spice` created by `sweet()`.
 ```javascript
 const { sweetie, spice } = await sweet({
@@ -188,6 +190,36 @@ await sweetie({
     to:   { width: 300 }
 });
 ```
+
+### Using Easing Equations
+Every tween needs an [easing equation](http://robertpenner.com/easing/) to calculate the amount of progression of a property over time.
+The default easing equation is linear (no easing applied).
+
+You can use your custom easing equation:
+```javascript
+import { Spice } from 'paprika-tween';
+const spice1 = new Spice({
+    from: { z: 10 },
+    to: { z: 55 },
+    // `v` is a float number between 0 (start) and 1 (end)
+    easing: (v) => Math.random() * v
+});
+```
+Or one of the functions [provided by in the Paprika package](https://github.com/raohmaru/paprika-tween/tree/master/src/easing):
+```javascript
+import { Spice } from 'paprika-tween';
+import { Exponential  } from 'paprika-tween/easing';
+const spice1 = new Spice({
+    from: { z: 10 },
+    to: { z: 55 },
+    easing: Exponential.Out
+});
+```
+If you are using Paprika as a standalone library, you can get the easing equations from a CDN or [download the minified JS file](https://github.com/raohmaru/paprika-tween/releases).
+| CDN URL | Type |
+|:--------|:-----|
+| https://unpkg.com/paprika-tween/dist/easing.min.js | [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) |
+| https://unpkg.com/paprika-tween/dist/easing.iife.min.js | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
 
 ## Compatibility
 Paprika 🌶 runs in any JavaScript environment that supports the following features:
