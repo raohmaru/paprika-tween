@@ -192,7 +192,7 @@ await sweetie({
 ```
 
 ### Using Easing Equations
-Every tween needs an [easing equation](http://robertpenner.com/easing/) to calculate the amount of progression of a property over time.
+Every spice needs an [easing equation](http://robertpenner.com/easing/) to calculate the amount of progression of a property over time.
 The default easing equation is linear (no easing applied).
 
 You can use your custom easing equation:
