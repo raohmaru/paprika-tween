@@ -104,6 +104,7 @@ class Sweetie extends Spice {
  * @returns {Promise} - A Promise that is resolved with two arguments: a <code>sweetie()</code> function to continue with
  * animation, and the {@link Sweetie} instance which properties are interpolated.
  * @module paprika-tween/sweet
+ * @function
  * @example
 import { sweet } from 'paprika-tween';
 const { sweetie } = await sweet({
