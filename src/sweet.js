@@ -107,7 +107,7 @@ class Sweetie extends Spice {
  * @function
  * @example
 import { sweet } from 'paprika-tween';
-const { sweetie } = await sweet({
+const { sweetie, spice } = await sweet({
     duration: 500,
     from: { size: 0 },
     to:   { size: 10 }
