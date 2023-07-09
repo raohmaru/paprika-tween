@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
     
-      - name: Build paprika 🌶
+      - name: Build Paprika 🌶
         run: npm run build
 
       - name: Run tests

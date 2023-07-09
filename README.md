@@ -232,8 +232,5 @@ You should provide your own polyfills in case any of these features are missing,
 [polyfill for `requestAnimationFrame()`](https://gist.github.com/raohmaru/af6c2f86b7214627f049ae1ba52981ba) in node.js,
 or use a [transpiler](https://javascript.info/polyfills) when building your application.
 
-## The Book of Spices
-With examples.
-
 # License
 Paprika 🌶 is distributed under the [MIT license](https://github.com/raohmaru/paprika-tween/blob/master/LICENSE).
