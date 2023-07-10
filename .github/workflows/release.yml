@@ -17,7 +17,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Install dependencies
         run: npm ci
@@ -28,17 +28,17 @@ jobs:
       - name: Run tests
         run: npm test --if-present
 
+      # - name: Prepare build artifacts
+      #   run: |
+      #     zip paprika-tween.zip CHANGELOG.md README.md package.json -r dist docs
+
       - name: Create release
         uses: cycjimmy/semantic-release-action@v3
         with:
           dry_run: false
           extra_plugins: |
-            @semantic-release/git
+            @semantic-release/changelog
+            @semantic-release/exec
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GIT_AUTHOR_NAME: github-actions
-          GIT_AUTHOR_EMAIL: github-actions@github.com
-          GIT_COMMITTER_NAME: github-actions
-          GIT_COMMITTER_EMAIL: github-actions@github.com
-          CI: true

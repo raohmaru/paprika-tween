@@ -1,14 +1,23 @@
 {
-  "dryRun": true,
+  "dryRun": false,
   "branches": ["master"],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "zip paprika-tween.zip CHANGELOG.md README.md package.json -r dist docs"
+      }
+    ],
     "@semantic-release/npm",
     [
-      "@semantic-release/git",
+      "@semantic-release/github",
       {
-        "assets": ["CHANGELOG.md", "README.md", "package.json", "dist", "docs"]
+        "assets": [
+          { "path": "paprika-tween.zip", "name": "paprika-tween-${nextRelease.gitTag}.zip" }
+        ]
       }
     ]
   ]
