@@ -11,7 +11,7 @@ const defaults = {
 };
 
 /**
- * A Spice is an animatable object which properties can be interpolated from its starting
+ * A Spice is the most basic animatable object which properties can be interpolated from its starting
  * value(s) to its end value(s), using an easing function.
  * @example
 import { Spice } from 'paprika-tween';

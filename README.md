@@ -60,8 +60,8 @@ In the browser, you can load Paprika 🌶 from a CDN or you can [download the mi
 and store it in your application.
 | URL | Type |
 |:----|:-----|
-| https://unpkg.com/paprika-tween | [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) |
-| https://unpkg.com/paprika-tween/dist/paprika-tween.iife.min.js | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
+| [https://unpkg.com/paprika-tween](https://unpkg.com/paprika-tween) | [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) |
+| [https://unpkg.com/paprika-tween/dist/paprika-tween.iife.min.js](https://unpkg.com/paprika-tween/dist/paprika-tween.iife.min.js) | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
 
 If you are using [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules),
 then you can import Paprika 🌶 by its URL:
@@ -218,8 +218,8 @@ const spice1 = new Spice({
 If you are using Paprika as a standalone library, you can get the easing equations from a CDN or [download the minified JS file](https://github.com/raohmaru/paprika-tween/releases).
 | CDN URL | Type |
 |:--------|:-----|
-| https://unpkg.com/paprika-tween/dist/easing.min.js | [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) |
-| https://unpkg.com/paprika-tween/dist/easing.iife.min.js | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
+| [https://unpkg.com/paprika-tween/dist/easing.min.js](https://unpkg.com/paprika-tween/dist/easing.min.js) | [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) |
+| [https://unpkg.com/paprika-tween/dist/easing.iife.min.js](https://unpkg.com/paprika-tween/dist/easing.iife.min.js) | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
 
 ## Compatibility
 Paprika 🌶 runs in any JavaScript environment that supports the following features:
