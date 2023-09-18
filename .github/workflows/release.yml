@@ -25,6 +25,9 @@ jobs:
       - name: Build Paprika 🌶
         run: npm run build
 
+      - name: Build docs
+        run: npm run docs
+
       - name: Run tests
         run: npm test --if-present
 
@@ -42,3 +45,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: github-actions
+          GIT_AUTHOR_EMAIL: github-actions@github.com
+          GIT_COMMITTER_NAME: github-actions
+          GIT_COMMITTER_EMAIL: github-actions@github.com
