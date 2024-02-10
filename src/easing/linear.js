@@ -1,3 +1,6 @@
 export const Linear = {
-    None: (t) => t
+    None: (t) => t,
+    In: (t) => t,
+    Out: (t) => t,
+    InOut: (t) => t
 };

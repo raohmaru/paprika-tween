@@ -75,10 +75,6 @@ class Sweetie extends Spice {
     get running() {
         return this._mortar.running;
     }
-    /**
-     * @method frame
-     * @private
-     */
 }
 /**
  * The function <code>sweet()</code> creates a tween animation that will run for the given duration, interpolating the

@@ -21,14 +21,14 @@ spice.start();
  * @since 1.0.0
  */
 
-export { Back } from './back.js';
-export { Bounce } from './bounce.js';
-export { Circular } from './circular.js';
-export { Cubic } from './cubic.js';
-export { Elastic } from './elastic.js';
-export { Exponential } from './exponential.js';
 export { Linear } from './linear.js';
+export { Sinusoidal } from './sinusoidal.js';
 export { Quadratic } from './quadratic.js';
+export { Cubic } from './cubic.js';
 export { Quartic } from './quartic.js';
 export { Quintic } from './quintic.js';
-export { Sinusoidal } from './sinusoidal.js';
+export { Exponential } from './exponential.js';
+export { Circular } from './circular.js';
+export { Back } from './back.js';
+export { Elastic } from './elastic.js';
+export { Bounce } from './bounce.js';
