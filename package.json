@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Spicy JavaScript animation engine",
   "browser": "./dist/paprika-tween.min.js",
-  "main": "./dist/paprika-tween.min.js",
+  "main": "./dist/paprika-tween.js",
   "exports": {
     ".": {
       "import": "./dist/paprika-tween.js",
@@ -15,7 +15,6 @@
     }
   },
   "type": "module",
-  "types": "index.d.ts",
   "engines": {
     "node": ">=18"
   },
