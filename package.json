@@ -44,8 +44,8 @@
   },
   "homepage": "https://github.com/raohmaru/paprika-tween",
   "devDependencies": {
-    "esbuild": "0.18.11",
-    "eslint": "8.44.0",
+    "esbuild": "0.20.1",
+    "eslint": "8.57.0",
     "jsdoc": "4.0.2",
     "minami": "github:nuxy/minami"
   },
