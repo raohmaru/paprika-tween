@@ -1,6 +1,6 @@
 {
   "name": "paprika-tween",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Spicy JavaScript animation engine",
   "browser": "./dist/paprika-tween.min.js",
   "main": "./dist/paprika-tween.min.js",
