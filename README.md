@@ -1,9 +1,9 @@
 # Paprika! 🌶
-A spicy JavaScript tweening/animation engine.
+A spicy JavaScript tweening/animation engine with 0 dependencies and a tiny size.
 
 [![Current Paprika version](https://badgen.net/npm/v/paprika-tween)](https://www.npmjs.com/package/paprika-tween)
+[![Paprika full bundle size](https://badgen.net/badgesize/gzip/https/unpkg.com/paprika-tween@latest)](https://unpkg.com/paprika-tween)
 [![CI](https://github.com/raohmaru/paprika-tween/workflows/CI/badge.svg?branch=master)](https://github.com/raohmaru/paprika-tween/actions/workflows/ci.yml?query=workflow%3ACI+branch%3Amaster)
-[![Bundle size](https://badgen.net/bundlephobia/min/paprika-tween)](https://bundlephobia.com/package/paprika-tween)
 [![License](https://img.shields.io/github/license/raohmaru/paprika-tween.svg)](https://github.com/raohmaru/paprika-tween/blob/master/LICENSE)
 
 Paprika 🌶 is a bare-bones, low-level library for the browser and node.js which applies an [interpolation](https://en.wikipedia.org/wiki/Interpolation)
