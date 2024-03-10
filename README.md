@@ -1,6 +1,11 @@
 # Paprika! 🌶
 A spicy JavaScript tweening/animation engine.
 
+[![Current Paprika version](https://badgen.net/npm/v/paprika-tween)](https://www.npmjs.com/package/paprika-tween)
+[![CI](https://github.com/raohmaru/paprika-tween/workflows/CI/badge.svg?branch=master)](https://github.com/raohmaru/paprika-tween/actions/workflows/ci.yml?query=workflow%3ACI+branch%3Amaster)
+[![Bundle size](https://badgen.net/bundlephobia/min/paprika-tween)](https://bundlephobia.com/package/paprika-tween)
+[![License](https://img.shields.io/github/license/raohmaru/paprika-tween.svg)](https://github.com/raohmaru/paprika-tween/blob/master/LICENSE)
+
 Paprika 🌶 is a bare-bones, low-level library for the browser and node.js which applies an [interpolation](https://en.wikipedia.org/wiki/Interpolation)
 between two numbers using an [easing equation](http://robertpenner.com/easing/) over a discrete amount of time.
 
@@ -32,7 +37,7 @@ const spice2 = new Spice({
 const mixer = new Mixer();
 // Put the spices in the mixer
 mixer.add(spice1, spice2)
-// And start the tweening
+     // And start the tweening at the time 0
      .start(0);
 // Advance to time 25
 mixer.frame(25);
@@ -50,7 +55,7 @@ sweet({
     duration: 500,
     delay: 50,
     from: { size: 0 },
-    to:   { size: 10 }
+    to:   { size: 10 },
     render: ({ size }) => { ... }
 });
 ```
@@ -109,6 +114,7 @@ const spice = new Spice({
        console.log(size);
     }
 });
+// Start the tweening at the time 0
 spice.start(0);
 spice.frame(15);
 spice.frame(33);
@@ -121,6 +127,7 @@ const spice1 = new Spice({ ... });
 const spice2 = new Spice({ ... });
 const recipe = new Recipe({ onEnd: () => {} });
 recipe.add(spice1, spice2)
+    // Start the tweening at performance.now()
     .start();
 recipe.frame(performance.now());
 ```
@@ -134,6 +141,7 @@ const recipe = new Recipe()
     .add(new Spice({ ... }), new Spice({ ... }));
 const mixer = new Mixer();
 mixer.add(spice, recipe);
+// Start the tweening
 mixer.start(2000);
 mixer.frame(2500);
 ```
@@ -220,6 +228,12 @@ If you are using Paprika as a standalone library, you can get the easing equatio
 |:--------|:-----|
 | [https://unpkg.com/paprika-tween/dist/easing.min.js](https://unpkg.com/paprika-tween/dist/easing.min.js) | [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) |
 | [https://unpkg.com/paprika-tween/dist/easing.iife.min.js](https://unpkg.com/paprika-tween/dist/easing.iife.min.js) | [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |
+
+```html
+<script type="module">
+import { Cubic, Exponential, Quadratic } from 'https://unpkg.com/paprika-tween/dist/easing.min.js';
+</script>
+```
 
 ## Compatibility
 Paprika 🌶 runs in any JavaScript environment that supports the following features:
