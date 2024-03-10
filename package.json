@@ -1,6 +1,6 @@
 {
   "name": "paprika-tween",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Spicy JavaScript animation engine",
   "browser": "./dist/paprika-tween.min.js",
   "main": "./dist/paprika-tween.min.js",
@@ -26,7 +26,7 @@
     "build:iife": "node build.mjs --env=iife",
     "build:node": "node build.mjs --env=node",
     "lint": "eslint src/**/*.js",
-    "docs": "jsdoc -R README.md ./src -r -d ./docs -t ./node_modules/minami",
+    "docs": "jsdoc -c .jsdoc.json",
     "deploy:docs": "npm run docs && gh-pages -d docs"
   },
   "repository": {
