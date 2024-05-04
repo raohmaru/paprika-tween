@@ -2,7 +2,7 @@
 A spicy JavaScript tweening/animation engine with 0 dependencies and a tiny size.
 
 [![Current Paprika version](https://badgen.net/npm/v/paprika-tween)](https://www.npmjs.com/package/paprika-tween)
-[![Paprika full bundle size](https://badgen.net/badgesize/gzip/https/unpkg.com/paprika-tween@latest)](https://unpkg.com/paprika-tween)
+[![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/paprika-tween@latest)](https://unpkg.com/paprika-tween)
 [![CI](https://github.com/raohmaru/paprika-tween/workflows/CI/badge.svg?branch=master)](https://github.com/raohmaru/paprika-tween/actions/workflows/ci.yml?query=workflow%3ACI+branch%3Amaster)
 [![License](https://img.shields.io/github/license/raohmaru/paprika-tween.svg)](https://github.com/raohmaru/paprika-tween/blob/master/LICENSE)
 
