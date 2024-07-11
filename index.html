@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-cookbook.html">Cookbook</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Mixer.html">Mixer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#add">add</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#start">start</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Mortar.html">Mortar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#pause">pause</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#resume">resume</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#start">start</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#stop">stop</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Recipe.html">Recipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#add">add</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#start">start</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Spice.html">Spice</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#start">start</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#update">update</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Sweetie.html">Sweetie</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sweetie.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sweetie.html#pause">pause</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sweetie.html#resume">resume</a></span></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-paprika-tween_easing.html">paprika-tween/easing</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#paprika-tween/sweet">paprika-tween/sweet</a></span></li>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>Paprika! 🌶</h1>
+<p>A spicy JavaScript tweening/animation engine with 0 dependencies and a tiny size.</p>
+<p><a href="https://www.npmjs.com/package/paprika-tween"><img src="https://badgen.net/npm/v/paprika-tween" alt="Current Paprika version"></a>
+<a href="https://unpkg.com/paprika-tween"><img src="https://img.shields.io/bundlejs/size/paprika-tween@latest" alt="npm package minimized gzipped size"></a>
+<a href="https://github.com/raohmaru/paprika-tween/actions/workflows/ci.yml?query=workflow%3ACI+branch%3Amaster"><img src="https://github.com/raohmaru/paprika-tween/workflows/CI/badge.svg?branch=master" alt="CI"></a>
+<a href="https://github.com/raohmaru/paprika-tween/blob/master/LICENSE"><img src="https://img.shields.io/github/license/raohmaru/paprika-tween.svg" alt="License"></a></p>
+<p>Paprika 🌶 is a bare-bones, low-level library for the browser and node.js which applies an <a href="https://en.wikipedia.org/wiki/Interpolation">interpolation</a>
+between two numbers using an <a href="http://robertpenner.com/easing/">easing equation</a> over a discrete amount of time.</p>
+<pre class="prettyprint source lang-javascript"><code>import { Mixer, Spice } from 'paprika-tween';
+import { Cubic } from 'paprika-tween/easing';
+// Create some spices with properties to interpolate
+const spice1 = new Spice({
+    duration: 100,
+    from: { x: 0, y: 0 },
+    to: { x: 200, y: 200 },
+    // Easing equation to calculate the interpolation
+    easing: Cubic.InOut,
+    render: ({ x, y }) => {
+        // Do something with `x` and `y`
+    }
+});
+const spice2 = new Spice({
+    duration: 100,
+    from: { gamma: 1.0 },
+    to: { gamma: 2.2 },
+    render: ({ gamma }) => {
+        // Do something with `gamma`
+    },
+    onEnd: (props) => {
+        // Fired when the interpolation ends
+    }
+});
+const mixer = new Mixer();
+// Put the spices in the mixer
+mixer.add(spice1, spice2)
+     // And start the tweening at the time 0
+     .start(0);
+// Advance to time 25
+mixer.frame(25);
+</code></pre>
+<p>Paprika 🌶 does not request an animation frame to move the tween forwards. You should call the <code>frame()</code> method by using
+<a href="https://developer.mozilla.org/en/docs/Web/API/Window/requestAnimationFrame"><code>requestAnimationFrame()</code></a> or an instance of the
+<a href="https://raohmaru.github.io/paprika-tween/Mixer.html">Mortar</a> class.</p>
+<p>Or you can use a <a href="https://raohmaru.github.io/paprika-tween/module-paprika_sweet.html">sweet</a> paprika.</p>
+<pre class="prettyprint source lang-javascript"><code>import { sweet } from 'paprika-tween';
+sweet({
+    duration: 500,
+    delay: 50,
+    from: { size: 0 },
+    to:   { size: 10 },
+    render: ({ size }) => { ... }
+});
+</code></pre>
+<h2>Installation</h2>
+<p>In the browser, you can load Paprika 🌶 from a CDN or you can <a href="https://github.com/raohmaru/paprika-tween/releases">download the minified JS file</a>
+and store it in your application.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">URL</th>
+<th style="text-align:left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://unpkg.com/paprika-tween">https://unpkg.com/paprika-tween</a></td>
+<td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">ESM</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://unpkg.com/paprika-tween/dist/paprika-tween.iife.min.js">https://unpkg.com/paprika-tween/dist/paprika-tween.iife.min.js</a></td>
+<td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFE</a></td>
+</tr>
+</tbody>
+</table>
+<p>If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">JavaScript modules</a>,
+then you can import Paprika 🌶 by its URL:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script type=&quot;module&quot;>
+import { Mixer, Spice, Recipe, Mortar, sweet } from 'https://unpkg.com/paprika-tween';
+&lt;/script>
+</code></pre>
+<p>If you prefer using Paprika 🌶 as a global variable, you can load the <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFE</a> variant which
+exposes the global variable <code>Paprika</code>.</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/dist/paprika-tween.iife.min.js&quot;>&lt;/script>
+&lt;script>
+  const { Mixer, Spice, Recipe, Mortar, sweet } = Paprika;
+&lt;/script>
+</code></pre>
+<p>If you are building your app using node.js (or writing a node.js app), you can install Paprika 🌶 using npm:</p>
+<pre class="prettyprint source lang-bash"><code>npm install paprika-tween
+</code></pre>
+<p>and then load it using <a href="https://nodejs.org/api/esm.html#modules-ecmascript-modules">ECMAScript modules</a></p>
+<pre class="prettyprint source lang-javascript"><code>import { Mixer, Spice, Recipe, Mortar, sweet } from 'paprika-tween';
+</code></pre>
+<p>or as a CommonJS module:</p>
+<pre class="prettyprint source lang-javascript"><code>const { Mixer, Spice, Recipe, Mortar, sweet } = require('paprika-tween');
+</code></pre>
+<h2>How to Cook</h2>
+<p>There are several ways to use Paprika 🌶.</p>
+<h3>Using a Spice</h3>
+<p>A <a href="https://raohmaru.github.io/paprika-tween/Spice.html">Spice</a> is the minimum tweenable object. It can be tweened alone,
+or by adding it to a <a href="https://raohmaru.github.io/paprika-tween/Recipe.html">Recipe</a> or to a
+<a href="https://raohmaru.github.io/paprika-tween/Mixer.html">Mixer</a>:</p>
+<pre class="prettyprint source lang-javascript"><code>const spice = new Spice({
+    duration: 45,
+    from: { size: 10 },
+    to: { size: 520 },
+    render: ({ size }) => {
+       console.log(size);
+    }
+});
+// Start the tweening at the time 0
+spice.start(0);
+spice.frame(15);
+spice.frame(33);
+</code></pre>
+<h3>Using a Recipe</h3>
+<p>A <a href="https://raohmaru.github.io/paprika-tween/Recipe.html">Recipe</a> can contain one or more spices, that will be tweened in sequence.</p>
+<pre class="prettyprint source lang-javascript"><code>const spice1 = new Spice({ ... });
+const spice2 = new Spice({ ... });
+const recipe = new Recipe({ onEnd: () => {} });
+recipe.add(spice1, spice2)
+    // Start the tweening at performance.now()
+    .start();
+recipe.frame(performance.now());
+</code></pre>
+<h3>Using a Mixer</h3>
+<p>A <a href="https://raohmaru.github.io/paprika-tween/Mixer.html">Mixer</a> can contain any number of spices or recipes, and all of them will be
+tweened at the same time.</p>
+<pre class="prettyprint source lang-javascript"><code>const spice = new Spice({ ... });
+const recipe = new Recipe()
+    .add(new Spice({ ... }), new Spice({ ... }));
+const mixer = new Mixer();
+mixer.add(spice, recipe);
+// Start the tweening
+mixer.start(2000);
+mixer.frame(2500);
+</code></pre>
+<h3>Shaking the Spices</h3>
+<p>To perform an animation of a Spice, Recipe or Mixer, you can use the method
+<a href="https://developer.mozilla.org/en/docs/Web/API/Window/requestAnimationFrame"><code>requestAnimationFrame()</code></a>
+to call the method <code>render()</code> on each frame update.</p>
+<pre class="prettyprint source lang-javascript"><code>const recipe = new Recipe({ onEnd: () => cancelAnimationFrame(rafID) });
+recipe.add(new Spice({ ... }), new Spice({ ... }));
+const mixer = new Mixer();
+mixer.add(recipe)
+     .start();
+function loop(timestamp) {
+    mixer.frame(timestamp);
+    rafID = requestAnimationFrame(loop);
+}
+let rafID = requestAnimationFrame(loop);
+</code></pre>
+<p>The <a href="https://raohmaru.github.io/paprika-tween/Mortar.html">Mortar</a> class can also perform an animation for a given
+<a href="https://en.wikipedia.org/wiki/Frame_rate">frames per second</a> on a more performant way by ensuring that the animation is run
+at the same speed regardless of the device and network conditions.</p>
+<pre class="prettyprint source lang-javascript"><code>const spice = new Spice({ ... });
+const mixer = new Mixer();
+mixer.add(spice)
+     .start();
+const mortar = new Mortar(time => mixer.frame(time), 15);
+mortar.start();
+</code></pre>
+<h3>Sweet Paprika 🌶</h3>
+<p>The <a href="https://raohmaru.github.io/paprika-tween/module-paprika_sweet.html"><code>sweet()</code></a> function starts automatically
+an animation, which returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/">Promise</a>
+that can be chained by using its method <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then"><code>.then()</code></a>
+or the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await"><code>await</code></a> keyword.</p>
+<p>Chained animations using the returned function <code>sweetie()</code> will reuse the <code>spice</code> created by <code>sweet()</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>const { sweetie, spice } = await sweet({
+    duration: 2000,
+    from: { width: 100 },
+    to:   { width: 200 }
+    render: ({ width }) => { ... }
+});
+await sweetie({
+    to:   { width: 0 }
+});
+await sweetie({
+    duration: 1000,
+    to:   { width: 300 }
+});
+</code></pre>
+<h3>Using Easing Equations</h3>
+<p>Every spice needs an <a href="http://robertpenner.com/easing/">easing equation</a> to calculate the amount of progression of a property over time.
+The default easing equation is linear (no easing applied).</p>
+<p>You can use your custom easing equation:</p>
+<pre class="prettyprint source lang-javascript"><code>import { Spice } from 'paprika-tween';
+const spice1 = new Spice({
+    from: { z: 10 },
+    to: { z: 55 },
+    // `v` is a float number between 0 (start) and 1 (end)
+    easing: (v) => Math.random() * v
+});
+</code></pre>
+<p>Or one of the functions <a href="https://github.com/raohmaru/paprika-tween/tree/master/src/easing">provided by in the Paprika package</a>:</p>
+<pre class="prettyprint source lang-javascript"><code>import { Spice } from 'paprika-tween';
+import { Exponential  } from 'paprika-tween/easing';
+const spice1 = new Spice({
+    from: { z: 10 },
+    to: { z: 55 },
+    easing: Exponential.Out
+});
+</code></pre>
+<p>If you are using Paprika as a standalone library, you can get the easing equations from a CDN or <a href="https://github.com/raohmaru/paprika-tween/releases">download the minified JS file</a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">CDN URL</th>
+<th style="text-align:left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://unpkg.com/paprika-tween/dist/easing.min.js">https://unpkg.com/paprika-tween/dist/easing.min.js</a></td>
+<td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">ESM</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://unpkg.com/paprika-tween/dist/easing.iife.min.js">https://unpkg.com/paprika-tween/dist/easing.iife.min.js</a></td>
+<td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFE</a></td>
+</tr>
+</tbody>
+</table>
+<pre class="prettyprint source lang-html"><code>&lt;script type=&quot;module&quot;>
+import { Cubic, Exponential, Quadratic } from 'https://unpkg.com/paprika-tween/dist/easing.min.js';
+&lt;/script>
+</code></pre>
+<h2>Compatibility</h2>
+<p>Paprika 🌶 runs in any JavaScript environment that supports the following features:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now"><code>performance.now()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame"><code>requestAnimationFrame()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"><code>async</code></a></li>
+<li>Nullish coalescing assignment <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment"><code>??=</code></a></li>
+</ul>
+<p>You should provide your own polyfills in case any of these features are missing, like a
+<a href="https://gist.github.com/raohmaru/af6c2f86b7214627f049ae1ba52981ba">polyfill for <code>requestAnimationFrame()</code></a> in node.js,
+or use a <a href="https://javascript.info/polyfills">transpiler</a> when building your application.</p>
+<h1>License</h1>
+<p>Paprika 🌶 is distributed under the <a href="https://github.com/raohmaru/paprika-tween/blob/master/LICENSE">MIT license</a>.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Thu Jul 11 2024 20:23:30 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

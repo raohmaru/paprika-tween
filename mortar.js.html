@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>mortar.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-cookbook.html">Cookbook</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Mixer.html">Mixer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#add">add</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mixer.html#start">start</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Mortar.html">Mortar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#pause">pause</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#resume">resume</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#start">start</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Mortar.html#stop">stop</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Recipe.html">Recipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#add">add</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Recipe.html#start">start</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Spice.html">Spice</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#frame">frame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#start">start</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Spice.html#update">update</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Sweetie.html">Sweetie</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sweetie.html#dispose">dispose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sweetie.html#pause">pause</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sweetie.html#resume">resume</a></span></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-paprika-tween_easing.html">paprika-tween/easing</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#paprika-tween/sweet">paprika-tween/sweet</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">mortar.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * The Mortar class will call the callback function at the given [frame rate]{@link https://en.wikipedia.org/wiki/Frame_rate}
+ * defined by the &lt;code>fps&lt;/code> argument (frames per second or times per second).
+ * &lt;br>
+ * Mortar can be used to perform an animation through a {@link Mixer}, {@link Spice} or {@link Recipe} by calling its
+ * &lt;code>frame()&lt;/code> method as the callback function. The interpolations will be updated before the next repaint.
+ * &lt;br>&lt;br>
+ * It tries to honors the given &lt;code>fps&lt;/code> value, so consecutive calls to the callback function will run at the same
+ * speed regardless on the performance of the device or the refresh rate of the screen. However, to ensure a consistent animation,
+ * be sure to use the &lt;code>delta&lt;/code> argument passed to the callback function to calculate how much the animation
+ * will progress in a frame.
+ * @example
+import { Mixer, Spice, Mortar } from 'paprika-tween';
+const spice = new Spice({
+    duration: 5000,
+    from: { scale: 1 },
+    to: { scale: 2.5 },
+    render: (props, interpolation) => { ... }
+});
+const mixer = new Mixer();
+mixer.add(spice)
+     .start();
+const mortar = new Mortar((time) => mixer.frame(time));
+mortar.start();
+ * @since 1.0.0
+ */
+export class Mortar {
+    /**
+     * Creates a new instance of the Mortar object.
+     * @param {function} [cb] - The function to be called at the given frame rate. It receives two arguments: the time since it started,
+     * and the elapsed time since the previous frame (or delta time).
+     * @param {Number} [fps=60] - The integer number of times to call the callback function per second (frames per second).
+     * Number must be an integer.
+     * @since 1.0.0
+     */
+    constructor(cb, fps = 60) {
+        this._cb = cb;
+        this._fpsInterval = 1000 / fps;
+        this._running = false;
+    }
+    /**
+     * Starts the frame-by-frame loop by internally calling to [requestAnimationFrame()]{@link https://developer.mozilla.org/en/docs/Web/API/Window/requestAnimationFrame}.
+     * The callback function will be called the &lt;code>fps&lt;/code> number of times per second.
+     * @since 1.0.0
+     */
+    start() {
+        this._startTime = performance.now();
+        this._previousTime = this._startTime;
+        this._previousDeltaTime = this._startTime;
+        this._pausedTime = 0;
+        this._running = true;
+        // Wrapper to keep the scope (faster than .bind()?)
+        this._onFrame = (currentTime) => this.frame(currentTime);
+        this.frame(this._startTime);
+    }
+    /**
+     * Pauses the frame-by-frame loop.
+     * @since 1.0.0
+     */
+    pause() {
+        this._running = false;
+        this._previousPauseTime = performance.now();
+    }
+    /**
+     * Resumes the frame-by-frame loop.
+     * @since 1.0.0
+     */
+    resume() {
+        const now = performance.now();
+        this._pausedTime += now - this._previousPauseTime;
+        this._running = true;
+        this.frame(now);
+    }
+    /**
+     * Stops the frame-by-frame loop and removes the callback function. Further calls to {@linkcode Mortar#start} will fail.
+     * @since 1.0.0
+     */
+    stop() {
+        this.pause();
+        this._cb = null;
+        this._onFrame = null;
+    }
+    /**
+     * The &lt;code>frame()&lt;/code> method is called before the browser performs the next repaint, then it calls the callback function.
+     * Mortar will ensure that the callback function is called no more than &lt;code>fps&lt;/code> number of times per second.
+     * &lt;br>
+     * To keep the same speed in your animation, Be sure to use the &lt;code>delta&lt;/code> argument to calculate how much the
+     * animation will progress in a frame.
+     * @since 1.0.0
+     * @example
+import { Mortar } from 'paprika-tween';
+function loop(time, delta) {
+    character.left += character.speed * delta;
+}
+const mortar = new Mortar(loop, 10);
+mortar.start();
+     */
+    frame(currentTime) {
+        if (!this._running) {
+            return;
+        }
+        currentTime -= this._pausedTime;
+        // Calculate elapsed time since last loop
+        let delta = currentTime - this._previousDeltaTime;
+        // If enough time has elapsed, draw the next frame
+        if (delta >= this._fpsInterval) {
+            // Adjust next execution time in case this frame took longer to execute
+            this._previousDeltaTime = currentTime - (delta % this._fpsInterval);
+            this._cb(currentTime, currentTime - this._previousTime);
+            this._previousTime = currentTime;
+        }
+        if (this._onFrame) {
+            requestAnimationFrame(this._onFrame);
+        }
+    }
+    /**
+     * Returns whether the instance is running or not.
+     * @type {Boolean}
+     */
+    get running() {
+        return this._running;
+    }
+    /**
+     * Returns the time since the Mortar started.
+     * @type {DOMHighResTimeStamp}
+     */
+    get time() {
+        return this._previousTime;
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Thu Jul 11 2024 20:23:30 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
