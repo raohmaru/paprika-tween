@@ -1,4 +1,6 @@
-dist/
+dist/*.js
+dist/*.cjs
+dist/*.map
 docs/
 node_modules/
 TODO

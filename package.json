@@ -6,6 +6,7 @@
   "main": "./dist/paprika-tween.js",
   "exports": {
     ".": {
+      "types": "./dist/paprika-tween.d.ts",
       "import": "./dist/paprika-tween.js",
       "require": "./dist/paprika-tween.cjs"
     },

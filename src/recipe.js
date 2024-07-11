@@ -5,7 +5,7 @@ const defaults = {
 };
 
 /**
- * A Recipe object can contain any number of [spices]{@link Spice} which will be interpolated <i>sequentially</i>, this is, one each another.
+ * A Recipe object can contain any number of [spices]{@link Spice} which will be interpolated <i>sequentially</i>, this is, one after another.
  * @example
 import { Mixer, Recipe, Spice } from 'paprika-tween';
 const spice1 = new Spice({ ... });
